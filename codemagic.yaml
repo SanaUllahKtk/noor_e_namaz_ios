@@ -1,0 +1,59 @@
+workflows:
+  ios-workflow:
+    name: iOS Build (.ipa)
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      node: 20
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Prepare and Build Web Assets
+        script: |
+          if [ -f "package.json" ] && grep -q '"build"' package.json; then
+            echo "Building web assets from root..."
+            npm install
+            npm run build
+          else
+            echo "Already inside iOS directory or web assets pre-compiled. Skipping npm build."
+          fi
+      - name: Install CocoaPods Dependencies
+        script: |
+          if [ -f "ios/App/Podfile" ]; then
+            cd ios/App && pod install
+          elif [ -f "App/Podfile" ]; then
+            cd App && pod install
+          elif [ -f "Podfile" ]; then
+            pod install
+          fi
+      - name: Build iOS Application (.ipa)
+        script: |
+          TARGET_DIR="."
+          if [ -d "ios/App" ]; then
+            TARGET_DIR="ios/App"
+          elif [ -d "App" ] && [ -f "App/App.xcworkspace/contents.xcworkspacedata" ]; then
+            TARGET_DIR="App"
+          fi
+          
+          echo "Building from $TARGET_DIR..."
+          cd "$TARGET_DIR"
+          
+          xcodebuild -workspace App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath build/App.xcarchive \
+            archive \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""
+          
+          mkdir -p build/Payload
+          cp -r build/App.xcarchive/Products/Applications/App.app build/Payload/
+          cd build
+          zip -r Noor-e-Namaz.ipa Payload
+          echo "Success! IPA generated at $(pwd)/Noor-e-Namaz.ipa"
+    artifacts:
+      - "**/*.ipa"
+      - "**/build/App.xcarchive"
+      - "/tmp/xcodebuild_logs/*.log"
