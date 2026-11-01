@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="grad-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="50%" stop-color="#047857" />
+      <stop offset="100%" stop-color="#022c22" />
+    </linearGradient>
+    <linearGradient id="grad-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Rounded Shield -->
+  <rect width="512" height="512" rx="128" fill="url(#grad-bg)" />
+  <circle cx="256" cy="256" r="230" fill="none" stroke="url(#grad-gold)" stroke-width="6" opacity="0.4" stroke-dasharray="12 12" />
+
+  <!-- Crescent Moon -->
+  <path d="M 285 100 A 150 150 0 1 0 410 320 A 120 120 0 1 1 285 100 Z" fill="url(#grad-gold)" filter="drop-shadow(0 10px 20px rgba(0,0,0,0.5))" />
+
+  <!-- Star -->
+  <polygon points="345,150 357,185 393,185 364,206 375,240 345,219 315,240 326,206 297,185 333,185" fill="#fef08a" />
+
+  <!-- Mosque Dome & Minarets Silhouette -->
+  <path d="M 120 400 L 120 320 L 140 320 L 140 400 Z" fill="#ffffff" opacity="0.9" />
+  <polygon points="130,290 120,320 140,320" fill="url(#grad-gold)" />
+
+  <path d="M 372 400 L 372 320 L 392 320 L 392 400 Z" fill="#ffffff" opacity="0.9" />
+  <polygon points="382,290 372,320 392,320" fill="url(#grad-gold)" />
+
+  <!-- Central Grand Dome -->
+  <path d="M 170 400 L 170 340 Q 170 240 256 210 Q 342 240 342 340 L 342 400 Z" fill="#ffffff" opacity="0.95" />
+  <polygon points="256,190 251,210 261,210" fill="url(#grad-gold)" />
+  <circle cx="256" cy="186" r="5" fill="#fef08a" />
+
+  <!-- Arch Doorway -->
+  <path d="M 226 400 L 226 330 Q 256 300 286 330 L 286 400 Z" fill="#064e3b" />
+
+  <!-- Branding Text -->
+  <text x="256" y="445" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="800" fill="#fef08a" text-anchor="middle" letter-spacing="3">TECHNOLOGY TYCOONS</text>
+  <text x="256" y="475" font-family="'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#34d399" text-anchor="middle" letter-spacing="1">NOOR-E-NAMAZ • 100% OFFLINE</text>
+</svg>

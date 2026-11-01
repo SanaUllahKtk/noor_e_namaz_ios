@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>نورِ نماز | Technology Tycoons Islamic App (100% Offline)</title>
+  
+  <!-- PWA Meta Tags -->
+  <meta name="description" content="100% Offline Islamic Mobile App with Prayer Times, Alarm, Daily Namaz Record, Qaza Tracker, Quran Tilawat, Digital Tasbeeh and Wazaif by Technology Tycoons.">
+  <meta name="theme-color" content="#064e3b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Noor-e-Namaz">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" href="./icons/icon-192.png">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="./css/app.css?v=34">
+</head>
+<body>
+
+  <!-- Responsive Mobile Shell Frame -->
+  <div class="mobile-shell">
+
+    <!-- Animated Technology Tycoons Splash Screen Intro -->
+    <div id="app-splash-screen" class="splash-screen" title="کلک کر کے فوراً آگے بڑھیں" onclick="window.__dismissSplash ? window.__dismissSplash() : (this.classList.add('fade-out'), setTimeout(()=>{try{this.remove()}catch(_){}},400));">
+      <div class="splash-content">
+        <div class="splash-logo-circle">
+          <svg class="splash-crescent-svg" viewBox="0 0 50 50" width="42" height="42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(2.5, 0)">
+              <!-- Geometrically Centered Islamic Crescent -->
+              <path d="M22 7C13.2 7 6 15 6 25C6 35 13.2 43 22 43C25.6 43 28.9 41.8 31.5 39.8C23.6 38.5 17.5 32.4 17.5 25C17.5 17.6 23.6 11.5 31.5 10.2C28.9 8.2 25.6 7 22 7Z" fill="url(#splashGoldGrad)" />
+              <!-- Gleaming 5-Point Star -->
+              <polygon points="31,16 32.8,20.2 37.4,20.5 33.9,23.3 35.2,27.7 31,25 26.8,27.7 28.1,23.3 24.6,20.5 29.2,20.2" fill="#fef08a" />
+            </g>
+            <defs>
+              <linearGradient id="splashGoldGrad" x1="6" y1="7" x2="35" y2="43" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#fef08a" />
+                <stop offset="0.5" stop-color="#fbbf24" />
+                <stop offset="1" stop-color="#f59e0b" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <h1 class="splash-app-name">نورِ نماز</h1>
+        <p class="splash-app-tagline">جامع و مستند اسلامی رہنمائی</p>
+
+        <!-- Animated Technology Tycoons Branding Banner -->
+        <div class="splash-tycoons-banner">
+          <div class="splash-line"></div>
+          <div class="splash-brand-center">
+            <div class="splash-powered">POWERED BY</div>
+            <div class="splash-brand-text">
+              <span class="splash-dot"></span>
+              TECHNOLOGY TYCOONS
+            </div>
+          </div>
+          <div class="splash-line"></div>
+        </div>
+
+        <div class="splash-loader-bar">
+          <div class="splash-loader-progress"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inline Splash Screen Failsafe: Guarantees Splash Screen NEVER Hangs -->
+    <script>
+      (function() {
+        var dismissed = false;
+        window.__dismissSplash = function() {
+          if (dismissed) return;
+          dismissed = true;
+          var s = document.getElementById('app-splash-screen');
+          if (s) {
+            s.classList.add('fade-out');
+            setTimeout(function() { if (s && s.parentNode) s.parentNode.removeChild(s); }, 450);
+          }
+        };
+        setTimeout(window.__dismissSplash, 2000);
+      })();
+    </script>
+
+    <!-- Scrollable Main Content Container (Maximized Screen Room) -->
+    <main class="views-container">
+
+      <!-- ==============================================
+           TAB 1: NAMAZ TIMINGS & ALARMS (DASHBOARD - LTR)
+           ============================================== -->
+      <section id="view-namaz" class="tab-view active" dir="ltr">
+        <!-- 100% Fixed Hero Capsule: Zero Pixel Movement, Completely Stationary -->
+        <div class="card smart-prayer-hero" dir="rtl">
+          <!-- Top Meta Row: Location & Timezone on one side, Islamic Date on the other -->
+          <div class="hero-top-meta-row">
+            <div class="hero-loc-pill" id="btn-hero-location" title="شہر / لوکیشن تبدیل کریں">
+              <span class="hero-loc-icon">📍</span>
+              <span id="hero-location-name" class="hero-loc-name">کراچی</span>
+              <span id="hero-timezone-badge" class="hero-tz-badge">(PKT +5)</span>
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="hero-date-pill" id="hero-islamic-date" title="آج کی اسلامی تاریخ">
+              -- تاریخ --
+            </div>
+          </div>
+
+          <div class="smart-hero-inner">
+            <!-- Left: Current Prayer, Live Pulse & Qaza Time -->
+            <div class="smart-hero-current-side">
+              <div class="smart-hero-tag-row">
+                <span class="live-pulse-dot"></span>
+                <span id="hero-current-name" class="smart-hero-prayer-title">نماز کا وقت</span>
+                <span id="hero-current-time" class="smart-hero-prayer-start">--:--</span>
+              </div>
+              <div class="smart-hero-qaza-row" id="hero-qaza-badge">
+                <span class="smart-qaza-icon">⏳</span>
+                <span id="hero-current-qaza-label" class="smart-qaza-text">قضاء وقت: --:--</span>
+              </div>
+            </div>
+
+            <!-- Right: Next Prayer & Live Countdown Ticker -->
+            <div class="smart-hero-countdown-side" dir="ltr">
+              <div class="smart-hero-next-line" id="hero-next-name">Next: -- --:--</div>
+              <div class="smart-countdown-pill">
+                <span class="smart-countdown-digits" id="hero-countdown-time">00:00:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scrollable Dashboard Content (Only this container scrolls; Hero card above never moves!) -->
+        <div class="dashboard-scrollable-content">
+          <!-- Floating Urgent Qaza Reminder Alert (Auto-shown when active prayer nears Qaza without being marked offered) -->
+          <div id="qaza-reminder-alert" class="qaza-reminder-alert" style="display: none;" dir="rtl">
+            <div class="qaza-alert-box">
+              <div class="qaza-alert-pulse">⚠️</div>
+              <div class="qaza-alert-text">
+                <div class="qaza-alert-title" id="qaza-alert-title">نماز قضاء کا ریمائنڈر!</div>
+                <div class="qaza-alert-desc" id="qaza-alert-desc">نماز کا وقت ختم ہونے کے قریب ہے۔ اگر ادا نہیں کی تو فوراً ادا فرما لیں۔</div>
+              </div>
+              <div class="qaza-alert-btns">
+                <button id="btn-qaza-alert-mark" class="btn-qaza-alert-done">✓ ادا کر لی</button>
+                <button id="btn-qaza-alert-dismiss" class="btn-qaza-alert-close">✕</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5 Daily Prayers List with Start & Qaza Times -->
+          <div class="section-hdr-row" dir="rtl">
+            <div class="section-hdr-title">اوقاتِ نماز</div>
+            <div class="section-hdr-sub">برائے منتخب لوکیشن</div>
+          </div>
+          <div id="prayers-list"></div>
+
+          <!-- Extra Times (Sehri, Ishraq, Tahajjud) -->
+          <div id="prayers-extra-times"></div>
+
+          <!-- Offline Qibla Compass Card (Click to Open Interactive Compass Popup) -->
+          <div class="card" id="btn-open-qibla-compass" style="margin-top: 14px; background: rgba(18, 50, 42, 0.7); cursor: pointer;" title="مکمل لائیو قبلہ کمپاس کھولنے کیلئے کلک کریں">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <span style="font-size: 16px;">🧭</span>
+                  <div style="font-weight: 700; font-size: 14px; color: #f1f5f9;">Qibla Direction (قبلہ رُخ)</div>
+                  <span style="font-size: 10px; background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 2px 7px; border-radius: 8px; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.35);">کمپاس کھولیں ↗</span>
+                </div>
+                <div style="font-size: 11px; color: #94a3b8; margin-top: 3px;">Kaaba Bearing: <strong id="qibla-degree-val" style="color: #34d399;">--°</strong> • فاصلہ: <strong id="qibla-dist-val" style="color: #fbbf24;">--</strong></div>
+              </div>
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: rgba(0,0,0,0.4); border: 2px solid rgba(16, 185, 129, 0.4); display: flex; align-items: center; justify-content: center; position: relative;">
+                <div id="qibla-compass-pointer" style="width: 4px; height: 32px; background: linear-gradient(to top, transparent 50%, #10b981 50%); position: absolute; transition: transform 0.5s ease;"></div>
+                <span style="font-size: 12px; font-weight: 800; color: #fbbf24; z-index: 2;">🕋</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Launcher for Faraiz & History -->
+          <div class="card" id="btn-quick-launch-knowledge" style="margin-top: 10px; cursor: pointer; background: linear-gradient(135deg, rgba(6, 78, 59, 0.45) 0%, rgba(17, 34, 32, 0.95) 100%); border-color: rgba(16, 185, 129, 0.35);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 26px;">📚</span>
+                <div>
+                  <div style="font-weight: 700; font-size: 14px; color: #fef08a;">نماز و وضو کے فرائض اور اسلامی تاریخ</div>
+                  <div style="font-size: 11px; color: #a7f3d0;">نماز کے ۱۳ فرائض، وضو کے ۴ فرائض اور ایمان افروز واقعات پڑھیں →</div>
+                </div>
+              </div>
+              <span style="font-size: 18px; color: #34d399;">➔</span>
+            </div>
+          </div>
+
+          <!-- Copyright info banner in English -->
+          <div class="app-footer">
+            Copyright © 2026 <strong>Technology Tycoons</strong>. All Rights Reserved.
+            <div style="font-size: 10px; color: #64748b; margin-top: 3px;">Designed & Developed by Technology Tycoons</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           TAB 2: DAILY PRAYER TRACKER (RECORD - RTL)
+           ============================================== -->
+      <section id="view-tracker" class="tab-view" dir="rtl">
+        <div class="card islamic-hero-card" style="padding: 12px 14px; margin-bottom: 10px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 8px; margin-bottom: 10px;">
+            <div>
+              <div style="font-size: 11px; color: #a7f3d0; text-transform: uppercase; font-weight: 700;">نماز ریکارڈ و تسلسل</div>
+              <div style="font-family: var(--font-urdu); font-size: 20px; font-weight: 800; color: #fef08a; line-height: 1.2;">روزانہ نماز ٹریکر</div>
+            </div>
+            <div style="text-align: right; background: rgba(6, 26, 20, 0.65); border: 1px solid rgba(16, 185, 129, 0.25); padding: 4px 10px; border-radius: 12px; display: flex; align-items: center; gap: 6px;">
+              <span style="font-size: 18px;">🔥</span>
+              <div style="font-size: 12px; font-weight: 700; color: #fef08a;" id="tracker-streak-count">0 Days</div>
+            </div>
+          </div>
+
+          <!-- Daily Progress Bar -->
+          <div style="margin-top: 8px;">
+            <div style="display: flex; justify-content: space-between; font-size: 12px; color: #cbd5e1; margin-bottom: 6px;">
+              <span>آج کی نمازیں:</span>
+              <span id="daily-tracker-progress-label" style="color: #a7f3d0; font-weight: 700;">0/5 نمازیں (0%)</span>
+            </div>
+            <div style="width: 100%; height: 7px; background: rgba(0,0,0,0.4); border-radius: 999px; overflow: hidden; border: 1px solid rgba(16, 185, 129, 0.2);">
+              <div id="daily-tracker-progress-fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, #10b981 0%, #34d399 100%); transition: width 0.3s ease;"></div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-around; margin-top: 10px; padding: 7px 10px; background: rgba(6, 26, 20, 0.65); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 12px; font-size: 12px;">
+            <div>کل ادا شدہ: <strong style="color: #34d399;" id="tracker-offered-count">0</strong></div>
+            <div>کل قضا ہوئی: <strong style="color: #f87171;" id="tracker-missed-count">0</strong></div>
+          </div>
+        </div>
+
+        <!-- Prayer Checklist -->
+        <div style="margin: 14px 4px 8px;">
+          <h2 style="font-size: 15px; font-weight: 700;">آج کی نمازوں پر نشان لگائیں</h2>
+          <p style="font-size: 11px; color: #94a3b8;">جو نماز پڑھیں "ادا کی" ٹک کریں، جو رہ جائے "قضا ہوئی" پر کلک کریں</p>
+        </div>
+        <div id="tracker-checklist"></div>
+
+        <div class="card" style="margin-top: 14px; background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.2);">
+          <div style="display: flex; gap: 10px; align-items: flex-start;">
+            <span style="font-size: 20px;">💡</span>
+            <div style="font-size: 12px; color: #cbd5e1; line-height: 1.6;">
+              <strong>خودکار قضا اندراج:</strong> جب آپ کسی نماز کو "قضا ہوئی" نشان زد کریں گے تو وہ خودکار طور پر آپ کے قضا کاؤنٹر میں جمع ہو جائے گی تاکہ آپ اسے بعد میں باآسانی ادا کر سکیں۔
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           TAB 3: QAZA MANAGEMENT & QAZA-E-UMRI (RTL)
+           ============================================== -->
+      <section id="view-qaza" class="tab-view" dir="rtl">
+        <div class="card islamic-hero-card" style="padding: 12px 14px; margin-bottom: 10px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 8px; margin-bottom: 10px;">
+            <div>
+              <div style="font-size: 11px; color: #a7f3d0; font-weight: 700; text-transform: uppercase;">قضا نمازوں کا ریکارڈ</div>
+              <div style="font-family: var(--font-urdu); font-size: 20px; font-weight: 800; color: #fef08a; line-height: 1.2;">قضائے عمری مینیجر</div>
+            </div>
+            <button class="app-btn app-btn-secondary" id="btn-open-qaza-calc" style="padding: 5px 12px; font-size: 11px; font-weight: 700; width: auto; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.35); color: #34d399; border-radius: 14px;">
+              🧮 کیلکولیٹر
+            </button>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; text-align: center;">
+            <div style="background: rgba(6, 26, 20, 0.65); border: 1px solid rgba(16, 185, 129, 0.25); padding: 8px 10px; border-radius: 12px;">
+              <div style="font-size: 11px; color: #cbd5e1;">باقی قضا نمازیں</div>
+              <div style="font-size: 22px; font-weight: 800; color: #f87171;" id="qaza-total-remaining">0</div>
+            </div>
+            <div style="background: rgba(6, 26, 20, 0.65); border: 1px solid rgba(16, 185, 129, 0.25); padding: 8px 10px; border-radius: 12px;">
+              <div style="font-size: 11px; color: #cbd5e1;">ادا شدہ قضا</div>
+              <div style="font-size: 22px; font-weight: 800; color: #34d399;" id="qaza-total-offered">0</div>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div>
+            <div style="display: flex; justify-content: space-between; font-size: 11px; color: #a7f3d0; margin-bottom: 4px;">
+              <span>تکمیل کی شرح:</span>
+              <span id="qaza-progress-text">0% ادا ہو چکی ہیں</span>
+            </div>
+            <div style="width: 100%; height: 6px; background: rgba(0,0,0,0.4); border-radius: 999px; overflow: hidden; border: 1px solid rgba(16, 185, 129, 0.2);">
+              <div id="qaza-progress-fill" style="width: 0%; height: 100%; background: linear-gradient(90deg, #10b981 0%, #34d399 100%); transition: width 0.3s ease;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 Prayers Qaza Counters Grid -->
+        <div style="margin: 14px 4px 8px;">
+          <h2 style="font-size: 15px; font-weight: 700;">نماز وار قضا کاؤنٹر</h2>
+          <p style="font-size: 11px; color: #94a3b8;">جب بھی قضا نماز پڑھیں "-1 ادا کی" پر کلک کریں</p>
+        </div>
+        <div id="qaza-cards-grid" class="qaza-grid"></div>
+
+        <!-- Method / Guidance Box -->
+        <div class="card" style="margin-top: 14px;">
+          <h3 style="font-size: 14px; font-weight: 700; color: #fbbf24; margin-bottom: 6px;">قضا نماز جلد ادا کرنے کا آسان طریقہ</h3>
+          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.7; font-family: var(--font-urdu); text-align: right;">
+            فقہائے کرام کے مطابق قضائے عمری جلد مکمل کرنے کے لیے: رکوع و سجود میں تین مرتبہ تسبیح پڑھیں، قعدہ میں التحیات کے بعد مختصر درود شریف و دعا پڑھ لیں، اور فرض کی تیسری و چوتھی رکعت میں سورۃ الفاتحہ کی جگہ تین بار سبحان اللہ کہہ کر بھی نماز مکمل ہو جاتی ہے۔ وتر کی تیسری رکعت میں دعائے قنوت کی جگہ ایک بار "رب اغفر لی" کافی ہے۔
+          </p>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           TAB 4: TILAWAT (OFFLINE QURAN MAJEED - RTL)
+           ============================================== -->
+      <section id="view-tilawat" class="tab-view" dir="rtl">
+        <!-- Surah List Mode -->
+        <div id="surah-list-view">
+          <div class="card islamic-hero-card" style="padding: 12px 14px; margin-bottom: 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 11px; color: #a7f3d0; text-transform: uppercase; font-weight: 700;">قرآن مجید فرقانِ حمید</div>
+                <h2 style="font-family: var(--font-urdu); font-size: 20px; font-weight: 800; color: #fef08a; margin: 0; line-height: 1.2;">تلاوتِ قرآن مجید</h2>
+                <p style="font-size: 11px; color: #cbd5e1; margin-top: 2px;">مکمل ۱۱۴ سورتیں بمع اردو ترجمہ و تلاوت (100% آف لائن)</p>
+              </div>
+              <span id="surahs-count-badge" style="font-size: 11px; background: rgba(6, 26, 20, 0.65); border: 1px solid rgba(16, 185, 129, 0.35); color: #34d399; padding: 4px 10px; border-radius: 12px; font-weight: 700; white-space: nowrap;">
+                📖 ۱۱۴ سورتیں
+              </span>
+            </div>
+          </div>
+
+          <!-- Surah Search Bar -->
+          <input type="text" id="input-surah-search" class="app-input" placeholder="🔍 سورت تلاش کریں (نام، نمبر یا اردو)..." style="margin-bottom: 10px; font-size: 13px; padding: 10px 14px;">
+
+          <!-- Category Filter Pills -->
+          <div id="surah-filter-pills" style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 12px; scrollbar-width: none;">
+            <button class="surah-filter-pill active" data-filter="all">تمام ۱۱۴ سورتیں</button>
+            <button class="surah-filter-pill" data-filter="essential">اہم و معمول سورتیں</button>
+            <button class="surah-filter-pill" data-filter="makki">مکی سورتیں</button>
+            <button class="surah-filter-pill" data-filter="madani">مدنی سورتیں</button>
+          </div>
+
+          <div id="surah-list-container"></div>
+        </div>
+
+        <!-- Single Surah Reader Mode -->
+        <div id="surah-reader-view" style="display: none;">
+          <!-- Sticky Pinned Reader Header Bar (Never scrolls away!) -->
+          <div class="reader-sticky-header" id="reader-sticky-bar">
+            <!-- Top Row: Back button, Surah Name, Font sizing -->
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+              <button class="app-btn app-btn-secondary" id="btn-back-to-surahs" style="width: auto; padding: 6px 14px; font-size: 12px; font-weight: 700; border-radius: 12px; background: rgba(16, 185, 129, 0.18); border: 1.5px solid rgba(16, 185, 129, 0.45); color: #34d399; margin: 0; min-height: unset; display: flex; align-items: center; gap: 5px;">
+                <span style="font-size: 14px; line-height: 1;">→</span>
+                <span>واپس سورتیں</span>
+              </button>
+
+              <div style="text-align: center; flex: 1; min-width: 0;">
+                <div id="sticky-surah-title" style="font-family: var(--font-arabic); font-size: 19px; color: #fef08a; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">سُوْرَةُ البَقَرَةِ</div>
+                <div id="sticky-surah-subtitle" style="font-size: 11px; color: #a7f3d0; font-weight: 600;">۲۸۶ آیات • مدنی سورت</div>
+              </div>
+
+              <div style="display: flex; gap: 4px;">
+                <button class="icon-btn" id="btn-quran-font-dec" title="چھوٹا کریں" style="width: 32px; height: 32px; font-size: 11px;">A-</button>
+                <button class="icon-btn" id="btn-quran-font-inc" title="بڑا کریں" style="width: 32px; height: 32px; font-size: 11px;">A+</button>
+              </div>
+            </div>
+
+            <!-- Bottom Row: Sleek Integrated Jump Bar + Compact Audio Controls -->
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; padding-top: 6px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+              <!-- Compact Audio Controls -->
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <button class="tilawat-mini-btn tilawat-mini-play" id="btn-play-all-verses" title="سورت سنیں (Play/Pause)" aria-label="Play">
+                  <span id="tilawat-main-play-icon">▶</span>
+                </button>
+                <button class="tilawat-mini-btn tilawat-mini-stop" id="btn-stop-tilawat" title="بند کریں (Stop)" aria-label="Stop">
+                  <span>⏹</span>
+                </button>
+                <span id="tilawat-status-pill" style="font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 6px; background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); white-space: nowrap;">
+                  ● تیار ہے
+                </span>
+              </div>
+
+              <!-- Professional Integrated Ayah Search / Jump Box -->
+              <div class="pro-ayah-jump-box">
+                <span style="font-size: 12px; color: #94a3b8; margin-left: 2px;">آیت:</span>
+                <input type="number" id="input-jump-ayah" min="1" max="286" placeholder="نمبر" class="pro-ayah-jump-input">
+                <button id="btn-jump-ayah" class="pro-ayah-jump-btn" title="اس آیت پر جائیں">
+                  جائیں
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Special Quick Section Shortcuts Pills (Scrollable) -->
+          <div id="reader-special-shortcuts" style="display: flex; gap: 6px; overflow-x: auto; padding: 4px 0 8px; margin-bottom: 8px; scrollbar-width: none;"></div>
+
+          <div id="reader-verses-container"></div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           TAB 5: TASBEEH & WAZAIF (RTL)
+           ============================================== -->
+      <section id="view-tasbeeh" class="tab-view" dir="rtl">
+        <!-- Digital Bead Ring Counter (Compact One-Screen Design) -->
+        <div class="card islamic-hero-card" style="text-align: center; padding: 12px 14px 14px; margin-bottom: 10px;">
+          <!-- Active Dhikr Label -->
+          <div id="tasbeeh-active-dhikr-title" style="font-family: var(--font-arabic); font-size: 22px; font-weight: 800; color: #fef08a; margin: 0 0 2px; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">سُبْحَانَ اللَّهِ</div>
+          <div id="tasbeeh-active-dhikr-trans" style="font-size: 11px; color: #a7f3d0; margin-bottom: 6px;">اللہ پاک ہے (تمام عیوب سے)</div>
+
+          <!-- Feedback Mode Switcher: Sound / Vibrate / Silent -->
+          <div class="tasbeeh-mode-switcher" dir="rtl">
+            <button class="tasbeeh-mode-btn active" data-mode="sound" id="mode-btn-sound" title="آواز اور وائبریشن">
+              <span>🔊</span>
+              <span>باآواز</span>
+            </button>
+            <button class="tasbeeh-mode-btn" data-mode="vibrate" id="mode-btn-vibrate" title="صرف وائبریشن">
+              <span>📳</span>
+              <span>وائبریشن</span>
+            </button>
+            <button class="tasbeeh-mode-btn" data-mode="silent" id="mode-btn-silent" title="مکمل خاموش">
+              <span>🔇</span>
+              <span>خاموش</span>
+            </button>
+          </div>
+
+          <!-- Touch Ring: Circular Progress Ring with Chakar & Count inside (Compact 146px) -->
+          <div class="tasbeeh-ring" id="tasbeeh-ring" title="گننے کے لیے ٹیپ کریں">
+            <svg class="tasbeeh-progress-svg" viewBox="0 0 160 160">
+              <circle class="tasbeeh-bg-circle" cx="80" cy="80" r="70"></circle>
+              <circle class="tasbeeh-bar-circle" id="tasbeeh-progress-circle" cx="80" cy="80" r="70"></circle>
+            </svg>
+            <div class="tasbeeh-ring-content">
+              <div class="tasbeeh-chakar-badge" id="tasbeeh-lap-display">چکر: 0</div>
+              <div class="tasbeeh-count-big" id="tasbeeh-count-display">0</div>
+              <div class="tasbeeh-target-sub" id="tasbeeh-target-display">ہدف: 33</div>
+            </div>
+          </div>
+
+          <!-- Reset Button & Lifetime Stats in Single Compact Row -->
+          <div style="display: flex; justify-content: center; align-items: center; gap: 8px; margin: 6px 0 10px;">
+            <button class="app-btn app-btn-secondary" id="btn-tasbeeh-reset" style="width: auto; padding: 5px 14px; font-size: 11px; font-weight: 700; border-radius: 14px; display: inline-flex; align-items: center; gap: 4px; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.35); color: #fca5a5;" title="موجودہ گنتی صفر کریں">
+              <span>🔄</span>
+              <span>گنتی صفر</span>
+            </button>
+            <button class="app-btn app-btn-secondary" id="btn-reset-lifetime" style="width: auto; padding: 5px 12px; font-size: 11px; font-weight: 700; border-radius: 14px; display: inline-flex; align-items: center; gap: 5px; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.15); color: #cbd5e1; cursor: pointer;" title="کل تسبیحات صفر کرنے کے لیے ٹیپ کریں">
+              <span>کل تسبیحات: <strong id="tasbeeh-lifetime-display" style="color: #fbbf24;">0</strong></span>
+              <span style="font-size: 10px; color: #f87171;">🗑️</span>
+            </button>
+          </div>
+
+          <!-- Dhikr Preset Selector & Target Selector (Compact Grid) -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <select class="app-input" id="select-tasbeeh-preset" style="font-size: 11px; padding: 6px 8px;">
+              <option value="subhanallah">سُبْحَانَ اللَّهِ</option>
+              <option value="alhamdulillah">الْحَمْدُ لِلَّهِ</option>
+              <option value="allahuakbar">اللَّهُ أَكْبَرُ</option>
+              <option value="astaghfirullah">أَسْتَغْفِرُ اللَّهَ</option>
+              <option value="durood">درود شریف</option>
+              <option value="lailaha">لَا إِلَهَ إِلَّا اللَّهُ</option>
+              <option value="kalima">پہلا کلمہ طیبہ</option>
+              <option value="hasbunallah">حَسْبُنَا اللَّهُ</option>
+            </select>
+
+            <select class="app-input" id="select-tasbeeh-target" style="font-size: 11px; padding: 6px 8px;">
+              <option value="33">ہدف: 33 مرتبہ</option>
+              <option value="100">ہدف: 100 مرتبہ</option>
+              <option value="1000">ہدف: 1000 مرتبہ</option>
+              <option value="0">لامحدود (Free Count)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Authentic Wazaif & Masnoon Duas -->
+        <div style="margin: 18px 4px 10px;">
+          <h2 style="font-size: 16px; font-weight: 700; color: #fbbf24;">مسنون دعائیں اور مجرب وظائف</h2>
+          <p style="font-size: 11px; color: #94a3b8;">قرآن و سنت کی روشنی میں مستند دعائیں اور ان کے فوائد</p>
+        </div>
+
+        <!-- Category Filter Buttons (Flex Wrap, 100% No x-axis scroll) -->
+        <div id="wazaif-categories" class="wazaif-categories-wrap">
+          <button class="app-btn app-btn-secondary wazaif-cat-btn active" data-category="all">تمام وظائف</button>
+          <button class="app-btn app-btn-secondary wazaif-cat-btn" data-category="morning_evening">🌅 صبح و شام</button>
+          <button class="app-btn app-btn-secondary wazaif-cat-btn" data-category="rizq">💰 رزق و برکت</button>
+          <button class="app-btn app-btn-secondary wazaif-cat-btn" data-category="hifazat">🛡️ حفاظت و نظر</button>
+          <button class="app-btn app-btn-secondary wazaif-cat-btn" data-category="shifa">🩺 شفا و بیماری</button>
+          <button class="app-btn app-btn-secondary wazaif-cat-btn" data-category="sukoon">🕊️ ذہنی سکون</button>
+          <button class="app-btn app-btn-secondary wazaif-cat-btn" data-category="daily">🏠 روز مرہ دعائیں</button>
+        </div>
+
+        <div id="wazaif-items-container"></div>
+      </section>
+
+      <!-- ==============================================
+           TAB 6: ISLAMIC KNOWLEDGE & HISTORY (احکام و تاریخ)
+           ============================================== -->
+      <section id="view-knowledge" class="tab-view">
+        <div class="card islamic-hero-card" style="padding: 12px 14px; margin-bottom: 10px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 8px; margin-bottom: 8px;">
+            <div>
+              <div style="font-size: 11px; color: #a7f3d0; text-transform: uppercase; font-weight: 700;">ضروری فقہی مسائل و سنہری تاریخ</div>
+              <h2 style="font-family: var(--font-urdu); font-size: 20px; font-weight: 800; color: #fef08a; margin: 0; line-height: 1.2;">احکام اور اسلامی تاریخ</h2>
+            </div>
+            <span style="font-size: 24px;">📚</span>
+          </div>
+          <p style="font-size: 12px; color: #cbd5e1; margin: 0; line-height: 1.6; font-family: var(--font-urdu); text-align: right;">
+            نماز کے ۱۳ فرائض و شرائط، وضو کے ۴ فرائض، غسل کے احکام اور ایمان افروز تاریخی معرکے (100% آف لائن)
+          </p>
+        </div>
+
+        <!-- Category Selector Pills -->
+        <div id="knowledge-categories-nav" style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin: 14px 0 10px;">
+          <button class="knowledge-pill-btn active" data-category="namaz_faraiz">
+            <span>🕌</span> نماز کے فرائض
+          </button>
+          <button class="knowledge-pill-btn" data-category="wuzu_faraiz">
+            <span>💧</span> وضو و غسل
+          </button>
+          <button class="knowledge-pill-btn" data-category="islamic_history">
+            <span>📜</span> اسلامی تاریخ
+          </button>
+        </div>
+
+        <!-- Dynamic Container for Knowledge & History Cards -->
+        <div id="knowledge-items-container"></div>
+
+        <!-- Copyright info banner in English -->
+        <div class="app-footer">
+          Copyright © 2026 <strong>Technology Tycoons</strong>. All Rights Reserved.
+          <div style="font-size: 10px; color: #64748b; margin-top: 3px;">Designed & Developed by Technology Tycoons</div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar (6 Tabs - LTR Home First) -->
+    <nav class="bottom-nav" dir="ltr">
+      <button class="nav-item active" data-tab="namaz">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+          <path d="M2 17l10 5 10-5"></path>
+          <path d="M2 12l10 5 10-5"></path>
+        </svg>
+        <span>اوقات</span>
+      </button>
+
+      <button class="nav-item" data-tab="tracker">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M9 11l3 3L22 4"></path>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+        </svg>
+        <span>ریکارڈ</span>
+      </button>
+
+      <button class="nav-item" data-tab="qaza">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span>قضا</span>
+      </button>
+
+      <button class="nav-item" data-tab="tilawat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+        <span>تلاوت</span>
+      </button>
+
+      <button class="nav-item" data-tab="tasbeeh">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="8"></circle>
+          <line x1="12" y1="2" x2="12" y2="4"></line>
+          <line x1="12" y1="20" x2="12" y2="22"></line>
+        </svg>
+        <span>تسبیح</span>
+      </button>
+
+      <button class="nav-item" data-tab="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+        <span>سیٹنگز</span>
+      </button>
+    </nav>
+
+    <!-- ==============================================
+         FULL-SCREEN PAGE: LOCATION SELECTOR (NO MODAL, 100% FULL SCREEN)
+         ============================================== -->
+    <div id="screen-location" class="location-fullscreen-page" style="display: none;" dir="rtl">
+      <!-- Full-Screen Sticky Header -->
+      <header class="loc-fullscreen-header">
+        <button id="btn-close-location-screen" class="loc-back-btn" title="واپس جائیں">
+          <span style="font-size: 16px;">←</span>
+          <span>واپس</span>
+        </button>
+        <div class="loc-header-titles">
+          <h2 class="loc-main-title">📍 شہر اور لوکیشن کا انتخاب</h2>
+          <div class="loc-sub-title">100% آف لائن فلکیاتی اوقاتِ نماز برائے پاکستان و دنیا</div>
+        </div>
+      </header>
+
+      <!-- Full-Screen Scrollable Body -->
+      <div class="loc-fullscreen-body">
+        <!-- Active Current Location Banner -->
+        <div class="loc-active-card">
+          <div class="loc-active-meta">
+            <span class="loc-active-badge">موجودہ منتخب شدہ:</span>
+            <div class="loc-active-city" id="loc-current-display-title">کراچی (Karachi, سندھ)</div>
+          </div>
+          <span class="loc-active-tick">● لائیو فعال</span>
+        </div>
+
+        <!-- GPS Hero Button -->
+        <button class="loc-gps-card-btn" id="btn-use-gps" title="موبائل جی پی ایس سے خودکار کوآرڈینیٹس لیں">
+          <div class="loc-gps-radar-wave">📡</div>
+          <div class="loc-gps-text">
+            <div class="loc-gps-title">موجودہ لوکیشن آٹو ڈیٹیکٹ کریں (GPS)</div>
+            <div class="loc-gps-desc">بغیر انٹرنیٹ درست کوآرڈینیٹس و قبلہ رخ حاصل کریں</div>
+          </div>
+          <span class="loc-gps-arrow">‹</span>
+        </button>
+
+        <!-- Popular Quick-Select City Chips (اہم شہر سرچ باکس کے اوپر) -->
+        <div class="loc-popular-wrapper">
+          <div class="loc-quick-label">فوری انتخاب (اہم شہر):</div>
+          <div class="loc-quick-chips" id="loc-popular-chips-container">
+            <button class="loc-quick-chip" data-city-id="pk-khi">کراچی</button>
+            <button class="loc-quick-chip" data-city-id="pk-lhr">لاہور</button>
+            <button class="loc-quick-chip" data-city-id="pk-isb">اسلام آباد</button>
+            <button class="loc-quick-chip" data-city-id="pk-rwp">راولپنڈی</button>
+            <button class="loc-quick-chip" data-city-id="pk-fsd">فیصل آباد</button>
+            <button class="loc-quick-chip" data-city-id="pk-mux">ملتان</button>
+            <button class="loc-quick-chip" data-city-id="pk-pew">پشاور</button>
+            <button class="loc-quick-chip" data-city-id="pk-qta">کوئٹہ</button>
+            <button class="loc-quick-chip" data-city-id="pk-skt">سیالکوٹ</button>
+            <button class="loc-quick-chip" data-city-id="pk-gjw">گوجرانوالہ</button>
+            <button class="loc-quick-chip" data-city-id="pk-hyd">حیدرآباد</button>
+            <button class="loc-quick-chip" data-city-id="pk-mzf">مظفرآباد</button>
+            <button class="loc-quick-chip" data-city-id="pk-glt">گلگت</button>
+          </div>
+        </div>
+
+        <!-- Modern Search Box with Clear Button -->
+        <div class="loc-search-box">
+          <span class="loc-search-icon">🔍</span>
+          <input type="text" id="input-city-search" class="loc-search-field" placeholder="شہر کا نام تلاش کریں (لاہور، پشاور، Karachi...)">
+          <button id="btn-clear-city-search" class="loc-clear-btn" style="display: none;" title="سرچ ختم کریں">✕</button>
+        </div>
+
+        <!-- Province / Region Filter Tabs -->
+        <div class="loc-prov-bar" id="loc-province-filter-bar">
+          <button class="loc-prov-btn active" data-province="all">سب شہر</button>
+          <button class="loc-prov-btn" data-province="پنجاب">پنجاب</button>
+          <button class="loc-prov-btn" data-province="سندھ">سندھ</button>
+          <button class="loc-prov-btn" data-province="خیبر پختونخوا">کے پی کے (KP)</button>
+          <button class="loc-prov-btn" data-province="بلوچستان">بلوچستان</button>
+          <button class="loc-prov-btn" data-province="اسلام آباد">اسلام آباد</button>
+          <button class="loc-prov-btn" data-province="آزاد کشمیر">آزاد کشمیر</button>
+          <button class="loc-prov-btn" data-province="گلگت بلتستان">گلگت بلتستان</button>
+          <button class="loc-prov-btn" data-province="international">بین الاقوامی</button>
+        </div>
+
+        <!-- Cities List Header Counter -->
+        <div class="loc-list-meta-row">
+          <span class="loc-list-heading">تمام دستیاب شہر:</span>
+          <span id="loc-cities-count" class="loc-list-count">-- شہر</span>
+        </div>
+
+        <!-- Full-Height Scrollable Cities List Container -->
+        <div id="cities-list-container" class="loc-cities-full-list"></div>
+      </div>
+    </div>
+
+    <!-- ==============================================
+         PROFESSIONAL CONFIRMATION POPUP DIALOG
+         ============================================== -->
+    <div id="modal-confirm-dialog" class="confirm-dialog-overlay" style="display: none;">
+      <div class="confirm-dialog-card" dir="rtl">
+        <div class="confirm-dialog-icon-wrap" id="confirm-dialog-icon">
+          🔄
+        </div>
+        <h3 class="confirm-dialog-title" id="confirm-dialog-title">تسبیح گنتی صفر کرنے کی تصدیق</h3>
+        <p class="confirm-dialog-desc" id="confirm-dialog-desc">کیا آپ موجودہ تسبیح کی گنتی صفر (0) کرنا چاہتے ہیں؟</p>
+        
+        <div class="confirm-dialog-actions">
+          <button id="btn-confirm-dialog-accept" class="confirm-dialog-btn confirm-dialog-btn-danger">
+            جی ہاں، صفر کریں
+          </button>
+          <button id="btn-confirm-dialog-cancel" class="confirm-dialog-btn confirm-dialog-btn-secondary">
+            نہیں، منسوخ کریں
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==============================================
+         MODAL 2: QAZA-E-UMRI CALCULATOR
+         ============================================== -->
+    <div id="modal-qaza-calc" class="modal-overlay">
+      <div class="modal-sheet">
+        <div class="sheet-header">
+          <h3 style="font-size: 16px; font-weight: 700;">قضائے عمری کیلکولیٹر</h3>
+          <button class="icon-btn" data-close-modal style="width: 28px; height: 28px;">✕</button>
+        </div>
+        <div class="sheet-body">
+          <p style="font-size: 12px; color: #cbd5e1; margin-bottom: 12px; line-height: 1.6;">
+            اپنی عمر اور چھوٹی ہوئی نمازوں کے سال درج کریں، ایپ خودکار طور پر تمام قضا نمازوں کا حساب لگا دے گی:
+          </p>
+
+          <div style="margin-bottom: 10px;">
+            <label style="font-size: 12px; color: #94a3b8; display: block; margin-bottom: 4px;">بلوغت کی عمر (عموماً 14 یا 15 سال):</label>
+            <input type="number" id="input-qaza-puberty" class="app-input" value="14">
+          </div>
+
+          <div style="margin-bottom: 10px;">
+            <label style="font-size: 12px; color: #94a3b8; display: block; margin-bottom: 4px;">آپ کی موجودہ عمر (سالوں میں):</label>
+            <input type="number" id="input-qaza-age" class="app-input" value="25">
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 12px; color: #94a3b8; display: block; margin-bottom: 4px;">یا کتنے سال نمازیں قضا ہوئیں؟ (اختیاری):</label>
+            <input type="number" id="input-qaza-missed-years" class="app-input" placeholder="مثلاً: 2 سال">
+          </div>
+
+          <button class="app-btn" id="btn-save-qaza-calc">
+            حساب لگائیں اور محفوظ کریں
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==============================================
+         MODAL 3: LIVE INTERACTIVE QIBLA COMPASS POPUP
+         ============================================== -->
+    <div id="modal-qibla-compass" class="modal-overlay modal-popup-centered" style="display: none;">
+      <div class="modal-sheet qibla-modal-sheet" dir="rtl">
+        <div class="sheet-header">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 22px;">🧭</span>
+            <div>
+              <h3 style="font-size: 16px; font-weight: 800; color: #f8fafc; margin: 0;">قبلہ رُخ کمپاس (Qibla Compass)</h3>
+              <div style="font-size: 11px; color: #34d399;">مقام: <span id="qibla-modal-city-name">کراچی</span> • 100% آف لائن فلکیاتی سمت</div>
+            </div>
+          </div>
+          <button class="icon-btn" id="btn-close-qibla-modal" data-close-modal style="width: 32px; height: 32px; font-size: 14px;">✕</button>
+        </div>
+
+        <div class="sheet-body" style="text-align: center; padding: 14px 14px 20px;">
+          <!-- Top Stats Banner -->
+          <div class="qibla-stats-banner">
+            <div style="font-size: 11px; color: #94a3b8; font-weight: 600;">بیت اللہ شریف کا حسابی زاویہ (Kaaba Bearing)</div>
+            <div style="display: flex; align-items: baseline; justify-content: center; gap: 8px; margin: 4px 0;">
+              <span id="qibla-modal-degree-val" style="font-size: 38px; font-weight: 900; color: #fbbf24; font-family: monospace;">262°</span>
+              <span id="qibla-modal-dir-text" style="font-size: 15px; font-weight: 800; color: #34d399;">مغرب جنوب (WSW)</span>
+            </div>
+            <div style="font-size: 11px; color: #cbd5e1;">مکہ مکرمہ کا فاصلہ: <strong id="qibla-modal-dist-text" style="color: #a7f3d0;">2,800 کلومیٹر</strong></div>
+          </div>
+
+          <!-- Live Visual Dial Compass -->
+          <div class="qibla-dial-wrapper">
+            <!-- Compass Dial Face -->
+            <div class="qibla-dial-face" id="qibla-dial-face">
+              <!-- Cardinal Marks -->
+              <span class="qibla-mark qibla-mark-n">شمال (N)</span>
+              <span class="qibla-mark qibla-mark-e">مشرق (E)</span>
+              <span class="qibla-mark qibla-mark-s">جنوب (S)</span>
+              <span class="qibla-mark qibla-mark-w">مغرب (W)</span>
+
+              <!-- Degree circular markings / ticks -->
+              <svg class="qibla-ticks-svg" viewBox="0 0 240 240">
+                <circle cx="120" cy="120" r="114" fill="none" stroke="rgba(16, 185, 129, 0.25)" stroke-width="2" />
+                <circle cx="120" cy="120" r="104" fill="none" stroke="rgba(251, 191, 36, 0.4)" stroke-width="1.5" stroke-dasharray="3 9" />
+                <circle cx="120" cy="120" r="92" fill="none" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
+              </svg>
+
+              <!-- Rotating Needle Layer (Points toward Qibla / Kaaba) -->
+              <div class="qibla-needle-layer" id="qibla-needle-layer">
+                <div class="qibla-needle-kaaba-head">
+                  <div class="qibla-needle-badge">
+                    <span style="font-size: 16px;">🕋</span>
+                    <span style="font-size: 10px; font-weight: 800; color: #fef08a;">قبلہ</span>
+                  </div>
+                  <div class="qibla-needle-arrow-tip"></div>
+                </div>
+                <div class="qibla-needle-stem"></div>
+                <div class="qibla-needle-south-tip"></div>
+              </div>
+
+              <!-- Center Jewel Pivot -->
+              <div class="qibla-center-jewel"></div>
+            </div>
+          </div>
+
+          <!-- Sensor / Usage Guidance Banner -->
+          <div class="qibla-guidance-box">
+            <div id="qibla-compass-sensor-note" class="qibla-sensor-note">
+              📱 موبائل کو سیدھا فرش یا ہتھیلی کے متوازی رکھیں
+            </div>
+            <p style="font-size: 11px; color: #94a3b8; margin: 6px 0 0; line-height: 1.6; font-family: var(--font-urdu);">
+              خانہ کعبہ کا نشان (🕋) آپ کے منتخب شہر کے مطابق قبلہ شریف کا درست رخ ظاہر کرتا ہے۔
+            </p>
+          </div>
+
+          <!-- Done / Close Button -->
+          <button class="app-btn" id="btn-close-qibla-popup" data-close-modal style="margin-top: 14px; width: 100%;">
+            بند کریں (Close)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==============================================
+         FULL-SCREEN PAGE: APP SETTINGS (NO MODAL, 100% FULL SCREEN)
+         ============================================== -->
+    <div id="screen-settings" class="settings-fullscreen-page" style="display: none;" dir="rtl">
+      <!-- Full-Screen Sticky Header -->
+      <header class="settings-fullscreen-header">
+        <button id="btn-close-settings-screen" class="loc-back-btn" title="واپس جائیں">
+          <span style="font-size: 16px;">←</span>
+          <span>واپس</span>
+        </button>
+        <div class="loc-header-titles">
+          <h2 class="loc-main-title">⚙️ ترتیبات (Settings)</h2>
+          <div class="loc-sub-title">اوقاتِ نماز کے طریقے، الارم، آوازیں و ڈیٹا مینیجر</div>
+        </div>
+      </header>
+
+      <!-- Full-Screen Scrollable Body -->
+      <div class="settings-fullscreen-body">
+        
+        <!-- Calculation Standard Card -->
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <span class="settings-card-icon">📐</span>
+            <div class="settings-card-title">طریقۂ حساب (Calculation Standard)</div>
+          </div>
+          <p class="settings-card-desc">فلکیاتی زاویوں کے مطابق فجر و عشاء کے اوقات کا حسابی معیار:</p>
+          <select id="select-calc-method" class="app-input" style="font-size: 12px;">
+            <option value="Karachi">جامعہ علومِ اسلامیہ علامہ بنوری ٹاؤن، کراچی (حنفی)</option>
+            <option value="MWL">رابطہ عالمِ اسلامی (Muslim World League)</option>
+            <option value="UmmAlQura">جامعہ ام القریٰ، مکہ مکرمہ</option>
+            <option value="ISNA">اسلامک سوسائٹی آف نارتھ امریکہ (ISNA)</option>
+            <option value="Egypt">مصری جنرل اتھارٹی آف سروے</option>
+          </select>
+        </div>
+
+        <!-- Juristic Method Card -->
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <span class="settings-card-icon">⚖️</span>
+            <div class="settings-card-title">نمازِ عصر فقہی وقت (Juristic Method)</div>
+          </div>
+          <p class="settings-card-desc">عصر کے وقت کا آغاز سایہ مثل کے لحاظ سے:</p>
+          <select id="select-asr-juristic" class="app-input" style="font-size: 12px;">
+            <option value="Hanafi">حنفی طریقہ (سایہ دو مثل)</option>
+            <option value="Standard">شافعی، مالکی، حنبلی (سایہ ایک مثل)</option>
+          </select>
+        </div>
+
+        <!-- Toggles Card (24h & Auto Qaza) -->
+        <div class="settings-card">
+          <div class="settings-toggle-row">
+            <div>
+              <div class="settings-toggle-title">24 گھنٹے فارمیٹ (24h Clock)</div>
+              <div class="settings-toggle-sub">17:30 کے بجائے 05:30 PM</div>
+            </div>
+            <input type="checkbox" id="toggle-24h">
+          </div>
+
+          <div class="settings-toggle-row" style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; margin-top: 10px;">
+            <div>
+              <div class="settings-toggle-title">خودکار قضا میں جمع کریں</div>
+              <div class="settings-toggle-sub">جب بھی کوئی نماز قضا نشان زد ہو</div>
+            </div>
+            <input type="checkbox" id="toggle-auto-qaza" checked>
+          </div>
+        </div>
+
+        <!-- Audio & Feedback Mode Card -->
+        <div class="settings-card">
+          <div class="settings-toggle-row">
+            <div>
+              <div class="settings-toggle-title">آواز و وائبریشن موڈ (Feedback Mode)</div>
+              <div class="settings-toggle-sub">تسبیح اور ایپ فیڈبیک ترتیبات</div>
+            </div>
+            <select id="select-feedback-mode" class="app-input" style="width: auto; padding: 5px 10px; font-size: 12px; max-width: 170px;">
+              <option value="sound">🔊 باآواز (Sound + Vibe)</option>
+              <option value="vibrate">📳 صرف وائبریشن (Vibrate)</option>
+              <option value="silent">🔇 مکمل خاموش (Silent)</option>
+            </select>
+          </div>
+
+          <div class="settings-toggle-row" style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; margin-top: 10px;">
+            <div>
+              <div class="settings-toggle-title">اذان کی آواز (Adhan Voice)</div>
+              <div class="settings-toggle-sub">ڈائریکٹ اذان بغیر گفتگو کے</div>
+            </div>
+            <select id="select-adhan-voice" class="app-input" style="width: auto; padding: 5px 10px; font-size: 12px; max-width: 170px;">
+              <option value="./audio/adhan-mishary.mp3">قاری مشاری راشد</option>
+              <option value="./audio/adhan-makkah.mp3">حرمِ مکی شریف</option>
+            </select>
+          </div>
+
+          <!-- Adhan Sound Test & Controls -->
+          <div style="margin-top: 14px; padding: 12px; background: rgba(0, 0, 0, 0.35); border: 1.5px solid rgba(16, 185, 129, 0.3); border-radius: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <div style="font-weight: 700; font-size: 13px; color: #fef08a;">🔊 اذان ٹیسٹ و کنٹرول</div>
+              <span id="settings-audio-status" style="font-size: 11px; padding: 2px 8px; border-radius: 6px; background: rgba(16, 185, 129, 0.2); color: #34d399;">● تیار ہے</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <button class="btn-test-azan-primary" id="btn-test-adhan">
+                <span style="font-size: 16px;">🔊</span>
+                <span>اذان سنیں (Play)</span>
+              </button>
+              <button class="btn-stop-azan-danger" id="btn-stop-audio">
+                <span style="font-size: 16px;">⏹</span>
+                <span>بند کریں (Stop)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Individual Prayer Alarms Card -->
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <span class="settings-card-icon">🔔</span>
+            <div class="settings-card-title">اذان الارم ترتیبات (Prayer Alarms)</div>
+          </div>
+          <p class="settings-card-desc">تمام اذانیں ڈیفالٹ آن ہیں۔ ضرورت کے مطابق کسی بھی نماز کا الارم آن یا آف کریں:</p>
+          
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 8px;">
+            <div class="settings-alarm-row">
+              <span class="settings-alarm-name">فجر (Fajr)</span>
+              <input type="checkbox" class="setting-alarm-chk" data-prayer="fajr" checked>
+            </div>
+            <div class="settings-alarm-row">
+              <span class="settings-alarm-name">ظہر (Dhuhr)</span>
+              <input type="checkbox" class="setting-alarm-chk" data-prayer="dhuhr" checked>
+            </div>
+            <div class="settings-alarm-row">
+              <span class="settings-alarm-name">عصر (Asr)</span>
+              <input type="checkbox" class="setting-alarm-chk" data-prayer="asr" checked>
+            </div>
+            <div class="settings-alarm-row">
+              <span class="settings-alarm-name">مغرب (Maghrib)</span>
+              <input type="checkbox" class="setting-alarm-chk" data-prayer="maghrib" checked>
+            </div>
+            <div class="settings-alarm-row">
+              <span class="settings-alarm-name">عشاء (Isha)</span>
+              <input type="checkbox" class="setting-alarm-chk" data-prayer="isha" checked>
+            </div>
+          </div>
+
+          <!-- Notification Bar Test Button -->
+          <div style="margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+            <button id="btn-test-notification-bar" class="app-btn app-btn-secondary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; color: #fef08a; background: rgba(251, 191, 36, 0.12); border: 1.5px solid rgba(251, 191, 36, 0.35); border-radius: 12px; padding: 10px;">
+              <span>🔔</span>
+              <span>نوٹیفکیشن بار ٹیسٹ کریں (Test Mobile Notification)</span>
+            </button>
+            <div style="font-size: 10px; color: #94a3b8; text-align: center; margin-top: 5px;">
+              اس بٹن پر کلک کر کے چیک کریں کہ موبائل کے اوپر نوٹیفکیشن بار میں الرٹ آتا ہے یا نہیں۔
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Reset & App Info Card -->
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <span class="settings-card-icon">🛡️</span>
+            <div class="settings-card-title">ڈیٹا و ایپ معلومات (Data & App Info)</div>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+            <button id="btn-settings-reset-lifetime" class="app-btn app-btn-secondary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; color: #f87171; border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.08);">
+              <span>🗑️</span>
+              <span>کل تسبیحات ریکارڈ صفر کریں (Reset Lifetime Tasbeeh)</span>
+            </button>
+            <button id="btn-settings-about" class="app-btn app-btn-secondary" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+              <span>ℹ️</span>
+              <span>ایپ کے بارے میں اور کاپی رائٹ (App Info)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Copyright Footer -->
+        <div style="text-align: center; padding: 14px 10px 30px; font-size: 11px; color: #64748b;">
+          <div>Copyright © 2026 <strong style="color: #94a3b8;">Technology Tycoons</strong></div>
+          <div style="font-size: 10px; color: #475569; margin-top: 2px;">All Rights Reserved • 100% Offline</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==============================================
+         MODAL 4: ABOUT & COPYRIGHT
+         ============================================== -->
+    <div id="modal-about" class="modal-overlay">
+      <div class="modal-sheet">
+        <div class="sheet-header">
+          <h3 style="font-size: 16px; font-weight: 700;">ایپ کے بارے میں</h3>
+          <button class="icon-btn" data-close-modal style="width: 28px; height: 28px;">✕</button>
+        </div>
+        <div class="sheet-body" style="text-align: center; padding: 24px 20px;">
+          <div style="width: 64px; height: 64px; border-radius: 20px; background: rgba(16, 185, 129, 0.2); border: 2px solid var(--primary-500); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 32px;">
+            🕌
+          </div>
+          <h2 style="font-size: 20px; font-weight: 800; color: #34d399;">نورِ نماز</h2>
+          <div style="font-size: 12px; color: #fbbf24; font-weight: 700; margin-bottom: 12px;">100% مکمل آف لائن اسلامی موبائل ایپ</div>
+          
+          <p style="font-size: 13px; color: #cbd5e1; line-height: 1.7; margin-bottom: 18px; text-align: right; font-family: var(--font-urdu);">
+            یہ ایپلی کیشن بغیر کسی انٹرنیٹ کے کام کرنے کے لیے تیار کی گئی ہے۔ اس میں فلکیاتی حساب سے نماز کے درست اوقات، آذان الارم، نمازوں کا ریکارڈ و ٹریکر، قضائے عمری مینیجر، تلاوتِ قرآن مجید، ڈیجیٹل تسبیح اور مستند مسنون وظائف شامل ہیں۔
+          </p>
+
+          <div style="background: rgba(0,0,0,0.35); border-radius: 14px; padding: 16px; border: 1px solid rgba(16, 185, 129, 0.2); margin-bottom: 16px; text-align: center;">
+            <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Legal &amp; Copyright Notice</div>
+            <div style="font-size: 16px; font-weight: 800; color: #f8fafc; margin-top: 6px;">Copyright © 2026 Technology Tycoons</div>
+            <div style="font-size: 12px; color: #34d399; font-weight: 600; margin-top: 3px;">All Rights Reserved.</div>
+            <div style="font-size: 11px; color: #94a3b8; margin-top: 8px; line-height: 1.5;">This software and its original content, features, and functionality are the exclusive property of Technology Tycoons and are protected by international copyright, trademark, and other intellectual property laws.</div>
+          </div>
+
+          <button class="app-btn" data-close-modal>
+            بند کریں
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==============================================
+         FULLSCREEN ADHAN ALARM ALERT (OVERLAY)
+         ============================================== -->
+    <div id="alarm-modal" class="alarm-overlay">
+      <div style="font-size: 60px; margin-bottom: 10px; animation: bounce 1s infinite alternate;">🕌</div>
+      <div style="font-size: 14px; color: #a7f3d0; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">الصلوٰۃ خیر من النوم</div>
+      <h1 id="alarm-prayer-title-ur" style="font-family: var(--font-urdu); font-size: 32px; color: #fef08a; margin: 8px 0;">نماز کا وقت ہو گیا ہے</h1>
+      <p id="alarm-prayer-title-en" style="font-size: 16px; color: #e2e8f0; margin-bottom: 24px;">It is time for Prayer</p>
+
+      <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 280px;">
+        <button class="app-btn" id="btn-alarm-offered" style="background: #10b981;">
+          ✓ نماز پڑھ رہا ہوں (ادا کی)
+        </button>
+        <button class="app-btn app-btn-secondary" id="btn-alarm-snooze">
+          ⏰ 5 منٹ بعد یاد دلائیں
+        </button>
+        <button class="btn-stop-azan-danger" id="btn-alarm-dismiss" style="width: 100%;">
+          <span>⏹</span>
+          <span>اذان بند کریں (Dismiss)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Floating Persistent Adhan Bar (Global - visible anytime Adhan plays) -->
+    <div id="adhan-playing-banner" class="adhan-banner" style="display: none;">
+      <div class="adhan-banner-content">
+        <div class="adhan-banner-pulse">🕌</div>
+        <div class="adhan-banner-info">
+          <div class="adhan-banner-title">اذان چل رہی ہے (Adhan Playing)</div>
+          <div class="adhan-banner-sub">آواز بند کرنے کیلئے یہاں دبائیں</div>
+        </div>
+      </div>
+      <button id="btn-floating-stop-adhan" class="btn-banner-stop">
+        ⏹ بند کریں (Stop)
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Main ES Module Bootstrapper -->
+  <script type="module" src="./js/app.js?v=35"></script>
+</body>
+</html>

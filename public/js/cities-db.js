@@ -1,0 +1,230 @@
+// Comprehensive Offline Database of Cities for Noor-e-Namaz
+// Preloaded with exact Latitudes, Longitudes, and Timezones for All Districts & Divisions of Pakistan
+// 100% Offline, Zero Internet Dependency! Built for Technology Tycoons
+
+export const CITIES_DATABASE = [
+  // ==========================================
+  // ISLAMABAD CAPITAL TERRITORY (وفاقی دارالحکومت)
+  // ==========================================
+  { id: 'pk-isb', name: 'Islamabad', urdu: 'اسلام آباد', province: 'اسلام آباد', country: 'Pakistan', lat: 33.6844, lng: 73.0479, timezone: 5, method: 'Karachi' },
+
+  // ==========================================
+  // PUNJAB (صوبہ پنجاب)
+  // ==========================================
+  { id: 'pk-lhr', name: 'Lahore', urdu: 'لاہور', province: 'پنجاب', country: 'Pakistan', lat: 31.5204, lng: 74.3587, timezone: 5, method: 'Karachi' },
+  { id: 'pk-fsd', name: 'Faisalabad', urdu: 'فیصل آباد', province: 'پنجاب', country: 'Pakistan', lat: 31.4504, lng: 73.1350, timezone: 5, method: 'Karachi' },
+  { id: 'pk-rwp', name: 'Rawalpindi', urdu: 'راولپنڈی', province: 'پنجاب', country: 'Pakistan', lat: 33.5651, lng: 73.0169, timezone: 5, method: 'Karachi' },
+  { id: 'pk-gjw', name: 'Gujranwala', urdu: 'گوجرانوالہ', province: 'پنجاب', country: 'Pakistan', lat: 32.1877, lng: 74.1945, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mux', name: 'Multan', urdu: 'ملتان', province: 'پنجاب', country: 'Pakistan', lat: 30.1575, lng: 71.5249, timezone: 5, method: 'Karachi' },
+  { id: 'pk-skt', name: 'Sialkot', urdu: 'سیالکوٹ', province: 'پنجاب', country: 'Pakistan', lat: 32.4945, lng: 74.5229, timezone: 5, method: 'Karachi' },
+  { id: 'pk-bwp', name: 'Bahawalpur', urdu: 'بہاولپور', province: 'پنجاب', country: 'Pakistan', lat: 29.3544, lng: 71.6911, timezone: 5, method: 'Karachi' },
+  { id: 'pk-sgz', name: 'Sargodha', urdu: 'سرگودھا', province: 'پنجاب', country: 'Pakistan', lat: 32.0836, lng: 72.6711, timezone: 5, method: 'Karachi' },
+  { id: 'pk-shk', name: 'Sheikhupura', urdu: 'شیخوپورہ', province: 'پنجاب', country: 'Pakistan', lat: 31.7131, lng: 73.9783, timezone: 5, method: 'Karachi' },
+  { id: 'pk-jng', name: 'Jhang', urdu: 'جھنگ', province: 'پنجاب', country: 'Pakistan', lat: 31.2781, lng: 72.3117, timezone: 5, method: 'Karachi' },
+  { id: 'pk-rjk', name: 'Rahim Yar Khan', urdu: 'رحیم یار خان', province: 'پنجاب', country: 'Pakistan', lat: 28.4195, lng: 70.3025, timezone: 5, method: 'Karachi' },
+  { id: 'pk-gjt', name: 'Gujrat', urdu: 'گجرات', province: 'پنجاب', country: 'Pakistan', lat: 32.5742, lng: 74.0754, timezone: 5, method: 'Karachi' },
+  { id: 'pk-kas', name: 'Kasur', urdu: 'قصور', province: 'پنجاب', country: 'Pakistan', lat: 31.1167, lng: 74.4500, timezone: 5, method: 'Karachi' },
+  { id: 'pk-dgi', name: 'Dera Ghazi Khan', urdu: 'ڈیرہ غازی خان', province: 'پنجاب', country: 'Pakistan', lat: 30.0561, lng: 70.6348, timezone: 5, method: 'Karachi' },
+  { id: 'pk-swl', name: 'Sahiwal', urdu: 'ساہیوال', province: 'پنجاب', country: 'Pakistan', lat: 30.6682, lng: 73.1114, timezone: 5, method: 'Karachi' },
+  { id: 'pk-oka', name: 'Okara', urdu: 'اوکاڑہ', province: 'پنجاب', country: 'Pakistan', lat: 30.8081, lng: 73.4458, timezone: 5, method: 'Karachi' },
+  { id: 'pk-wah', name: 'Wah Cantonment', urdu: 'واہ کینٹ', province: 'پنجاب', country: 'Pakistan', lat: 33.7744, lng: 72.7528, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mdb', name: 'Mandi Bahauddin', urdu: 'منڈی بہاؤالدین', province: 'پنجاب', country: 'Pakistan', lat: 32.5870, lng: 73.4912, timezone: 5, method: 'Karachi' },
+  { id: 'pk-bwn', name: 'Bahawalnagar', urdu: 'بہاولنگر', province: 'پنجاب', country: 'Pakistan', lat: 29.9987, lng: 73.2536, timezone: 5, method: 'Karachi' },
+  { id: 'pk-pkt', name: 'Pakpattan', urdu: 'پاکپتن', province: 'پنجاب', country: 'Pakistan', lat: 30.3410, lng: 73.3866, timezone: 5, method: 'Karachi' },
+  { id: 'pk-tts', name: 'Toba Tek Singh', urdu: 'ٹوبہ ٹیک سنگھ', province: 'پنجاب', country: 'Pakistan', lat: 30.9709, lng: 72.4828, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mzg', name: 'Muzaffargarh', urdu: 'مظفر گڑھ', province: 'پنجاب', country: 'Pakistan', lat: 30.0726, lng: 71.1938, timezone: 5, method: 'Karachi' },
+  { id: 'pk-ldh', name: 'Lodhran', urdu: 'لودھراں', province: 'پنجاب', country: 'Pakistan', lat: 29.5405, lng: 71.6336, timezone: 5, method: 'Karachi' },
+  { id: 'pk-lyh', name: 'Layyah', urdu: 'لیہ', province: 'پنجاب', country: 'Pakistan', lat: 30.9613, lng: 70.9390, timezone: 5, method: 'Karachi' },
+  { id: 'pk-bhk', name: 'Bhakkar', urdu: 'بھکر', province: 'پنجاب', country: 'Pakistan', lat: 31.6253, lng: 71.0657, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mwl', name: 'Mianwali', urdu: 'میانوالی', province: 'پنجاب', country: 'Pakistan', lat: 32.5853, lng: 71.5436, timezone: 5, method: 'Karachi' },
+  { id: 'pk-khb', name: 'Khushab', urdu: 'خوشاب', province: 'پنجاب', country: 'Pakistan', lat: 32.2967, lng: 72.3525, timezone: 5, method: 'Karachi' },
+  { id: 'pk-jhb', name: 'Jauharabad', urdu: 'جوہر آباد', province: 'پنجاب', country: 'Pakistan', lat: 32.2906, lng: 72.2783, timezone: 5, method: 'Karachi' },
+  { id: 'pk-chk', name: 'Chakwal', urdu: 'چکوال', province: 'پنجاب', country: 'Pakistan', lat: 32.9333, lng: 72.8500, timezone: 5, method: 'Karachi' },
+  { id: 'pk-jhl', name: 'Jhelum', urdu: 'جہلم', province: 'پنجاب', country: 'Pakistan', lat: 32.9425, lng: 73.7257, timezone: 5, method: 'Karachi' },
+  { id: 'pk-atk', name: 'Attock', urdu: 'اٹک', province: 'پنجاب', country: 'Pakistan', lat: 33.7667, lng: 72.3667, timezone: 5, method: 'Karachi' },
+  { id: 'pk-txl', name: 'Taxila', urdu: 'ٹیکسلا', province: 'پنجاب', country: 'Pakistan', lat: 33.7463, lng: 72.8397, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mre', name: 'Murree', urdu: 'مری', province: 'پنجاب', country: 'Pakistan', lat: 33.9070, lng: 73.3943, timezone: 5, method: 'Karachi' },
+  { id: 'pk-nks', name: 'Nankana Sahib', urdu: 'ننکانہ صاحب', province: 'پنجاب', country: 'Pakistan', lat: 31.4492, lng: 73.7125, timezone: 5, method: 'Karachi' },
+  { id: 'pk-nrw', name: 'Narowal', urdu: 'نارووال', province: 'پنجاب', country: 'Pakistan', lat: 32.1000, lng: 74.8731, timezone: 5, method: 'Karachi' },
+  { id: 'pk-haf', name: 'Hafizabad', urdu: 'حافظ آباد', province: 'پنجاب', country: 'Pakistan', lat: 32.0679, lng: 73.6854, timezone: 5, method: 'Karachi' },
+  { id: 'pk-chz', name: 'Chiniot', urdu: 'چنیوٹ', province: 'پنجاب', country: 'Pakistan', lat: 31.7200, lng: 72.9789, timezone: 5, method: 'Karachi' },
+  { id: 'pk-khn', name: 'Khanewal', urdu: 'خانیوال', province: 'پنجاب', country: 'Pakistan', lat: 30.3004, lng: 71.9321, timezone: 5, method: 'Karachi' },
+  { id: 'pk-veh', name: 'Vehari', urdu: 'وہاڑی', province: 'پنجاب', country: 'Pakistan', lat: 30.0419, lng: 72.3556, timezone: 5, method: 'Karachi' },
+  { id: 'pk-bur', name: 'Burewala', urdu: 'بورے والا', province: 'پنجاب', country: 'Pakistan', lat: 30.1594, lng: 72.6781, timezone: 5, method: 'Karachi' },
+  { id: 'pk-kam', name: 'Kamoke', urdu: 'کامونکی', province: 'پنجاب', country: 'Pakistan', lat: 31.9744, lng: 74.2244, timezone: 5, method: 'Karachi' },
+  { id: 'pk-dsk', name: 'Daska', urdu: 'ڈسکہ', province: 'پنجاب', country: 'Pakistan', lat: 32.3242, lng: 74.3503, timezone: 5, method: 'Karachi' },
+  { id: 'pk-gjr', name: 'Gojra', urdu: 'گوجرہ', province: 'پنجاب', country: 'Pakistan', lat: 31.1492, lng: 72.6842, timezone: 5, method: 'Karachi' },
+  { id: 'pk-bhl', name: 'Bhalwal', urdu: 'بھلوال', province: 'پنجاب', country: 'Pakistan', lat: 32.2642, lng: 72.8986, timezone: 5, method: 'Karachi' },
+  { id: 'pk-smd', name: 'Samundri', urdu: 'سمندری', province: 'پنجاب', country: 'Pakistan', lat: 31.0639, lng: 72.9511, timezone: 5, method: 'Karachi' },
+  { id: 'pk-jrw', name: 'Jaranwala', urdu: 'جڑانوالہ', province: 'پنجاب', country: 'Pakistan', lat: 31.3342, lng: 73.4194, timezone: 5, method: 'Karachi' },
+  { id: 'pk-csn', name: 'Chishtian', urdu: 'چشتیاں', province: 'پنجاب', country: 'Pakistan', lat: 29.7958, lng: 72.8578, timezone: 5, method: 'Karachi' },
+  { id: 'pk-hsp', name: 'Hasilpur', urdu: 'حاصل پور', province: 'پنجاب', country: 'Pakistan', lat: 29.6967, lng: 72.5542, timezone: 5, method: 'Karachi' },
+  { id: 'pk-sdq', name: 'Sadiqabad', urdu: 'صادق آباد', province: 'پنجاب', country: 'Pakistan', lat: 28.3006, lng: 70.1306, timezone: 5, method: 'Karachi' },
+  { id: 'pk-ape', name: 'Ahmadpur East', urdu: 'احمد پور شرقیہ', province: 'پنجاب', country: 'Pakistan', lat: 29.1431, lng: 71.2592, timezone: 5, method: 'Karachi' },
+  { id: 'pk-kta', name: 'Kot Addu', urdu: 'کوٹ ادو', province: 'پنجاب', country: 'Pakistan', lat: 30.4700, lng: 70.9644, timezone: 5, method: 'Karachi' },
+  { id: 'pk-rjp', name: 'Rajanpur', urdu: 'راجن پور', province: 'پنجاب', country: 'Pakistan', lat: 29.1039, lng: 70.3250, timezone: 5, method: 'Karachi' },
+  { id: 'pk-tns', name: 'Taunsa Sharif', urdu: 'تونسہ شریف', province: 'پنجاب', country: 'Pakistan', lat: 30.7042, lng: 70.6506, timezone: 5, method: 'Karachi' },
+  { id: 'pk-wzb', name: 'Wazirabad', urdu: 'وزیر آباد', province: 'پنجاب', country: 'Pakistan', lat: 32.4431, lng: 74.1200, timezone: 5, method: 'Karachi' },
+  { id: 'pk-ptk', name: 'Pattoki', urdu: 'پتوکی', province: 'پنجاب', country: 'Pakistan', lat: 31.0214, lng: 73.8533, timezone: 5, method: 'Karachi' },
+  { id: 'pk-shj', name: 'Shujabad', urdu: 'شجاع آباد', province: 'پنجاب', country: 'Pakistan', lat: 29.8803, lng: 71.2950, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mls', name: 'Mailsi', urdu: 'میلسی', province: 'پنجاب', country: 'Pakistan', lat: 29.8000, lng: 72.1792, timezone: 5, method: 'Karachi' },
+
+  // ==========================================
+  // SINDH (صوبہ سندھ)
+  // ==========================================
+  { id: 'pk-khi', name: 'Karachi', urdu: 'کراچی', province: 'سندھ', country: 'Pakistan', lat: 24.8607, lng: 67.0011, timezone: 5, method: 'Karachi' },
+  { id: 'pk-hyd', name: 'Hyderabad', urdu: 'حیدرآباد', province: 'سندھ', country: 'Pakistan', lat: 25.3960, lng: 68.3578, timezone: 5, method: 'Karachi' },
+  { id: 'pk-skz', name: 'Sukkur', urdu: 'سکھر', province: 'سندھ', country: 'Pakistan', lat: 27.7052, lng: 68.8574, timezone: 5, method: 'Karachi' },
+  { id: 'pk-lkn', name: 'Larkana', urdu: 'لاڑکانہ', province: 'سندھ', country: 'Pakistan', lat: 27.5590, lng: 68.2264, timezone: 5, method: 'Karachi' },
+  { id: 'pk-nwb', name: 'Nawabshah', urdu: 'نواب شاہ', province: 'سندھ', country: 'Pakistan', lat: 26.2483, lng: 68.4096, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mir', name: 'Mirpur Khas', urdu: 'میرپور خاص', province: 'سندھ', country: 'Pakistan', lat: 25.5276, lng: 69.0159, timezone: 5, method: 'Karachi' },
+  { id: 'pk-kpr', name: 'Khairpur', urdu: 'خیرپور', province: 'سندھ', country: 'Pakistan', lat: 27.5295, lng: 68.7592, timezone: 5, method: 'Karachi' },
+  { id: 'pk-jcb', name: 'Jacobabad', urdu: 'جیکب آباد', province: 'سندھ', country: 'Pakistan', lat: 28.2819, lng: 68.4375, timezone: 5, method: 'Karachi' },
+  { id: 'pk-skp', name: 'Shikarpur', urdu: 'شکارپور', province: 'سندھ', country: 'Pakistan', lat: 27.9556, lng: 68.6382, timezone: 5, method: 'Karachi' },
+  { id: 'pk-ddu', name: 'Dadu', urdu: 'دادو', province: 'سندھ', country: 'Pakistan', lat: 26.7329, lng: 67.7769, timezone: 5, method: 'Karachi' },
+  { id: 'pk-tht', name: 'Thatta', urdu: 'ٹھٹہ', province: 'سندھ', country: 'Pakistan', lat: 24.7475, lng: 67.9235, timezone: 5, method: 'Karachi' },
+  { id: 'pk-bdn', name: 'Badin', urdu: 'بدین', province: 'سندھ', country: 'Pakistan', lat: 24.6558, lng: 68.8383, timezone: 5, method: 'Karachi' },
+  { id: 'pk-ght', name: 'Ghotki', urdu: 'گھوٹکی', province: 'سندھ', country: 'Pakistan', lat: 28.0064, lng: 69.3161, timezone: 5, method: 'Karachi' },
+  { id: 'pk-tly', name: 'Tando Allahyar', urdu: 'ٹنڈو الہ یار', province: 'سندھ', country: 'Pakistan', lat: 25.4605, lng: 68.7176, timezone: 5, method: 'Karachi' },
+  { id: 'pk-tad', name: 'Tando Adam', urdu: 'ٹنڈو آدم', province: 'سندھ', country: 'Pakistan', lat: 25.7682, lng: 68.6620, timezone: 5, method: 'Karachi' },
+  { id: 'pk-tmk', name: 'Tando Muhammad Khan', urdu: 'ٹنڈو محمد خان', province: 'سندھ', country: 'Pakistan', lat: 25.1239, lng: 68.5369, timezone: 5, method: 'Karachi' },
+  { id: 'pk-umk', name: 'Umerkot', urdu: 'عمرکوٹ', province: 'سندھ', country: 'Pakistan', lat: 25.3614, lng: 69.7369, timezone: 5, method: 'Karachi' },
+  { id: 'pk-sng', name: 'Sanghar', urdu: 'سانگھڑ', province: 'سندھ', country: 'Pakistan', lat: 26.0464, lng: 68.9481, timezone: 5, method: 'Karachi' },
+  { id: 'pk-nsf', name: 'Naushahro Feroze', urdu: 'نوشہرو فیروز', province: 'سندھ', country: 'Pakistan', lat: 26.8401, lng: 68.1227, timezone: 5, method: 'Karachi' },
+  { id: 'pk-ksm', name: 'Kashmore', urdu: 'کشمور', province: 'سندھ', country: 'Pakistan', lat: 28.4333, lng: 69.5833, timezone: 5, method: 'Karachi' },
+  { id: 'pk-kdk', name: 'Kandhkot', urdu: 'کندھ کوٹ', province: 'سندھ', country: 'Pakistan', lat: 28.2439, lng: 69.1822, timezone: 5, method: 'Karachi' },
+  { id: 'pk-sdk', name: 'Shahdadkot', urdu: 'شہداد کوٹ', province: 'سندھ', country: 'Pakistan', lat: 27.8475, lng: 67.9067, timezone: 5, method: 'Karachi' },
+  { id: 'pk-ktr', name: 'Kotri', urdu: 'کوٹری', province: 'سندھ', country: 'Pakistan', lat: 25.3667, lng: 68.3167, timezone: 5, method: 'Karachi' },
+  { id: 'pk-jms', name: 'Jamshoro', urdu: 'جامشورو', province: 'سندھ', country: 'Pakistan', lat: 25.4361, lng: 68.2811, timezone: 5, method: 'Karachi' },
+  { id: 'pk-shw', name: 'Sehwan Sharif', urdu: 'سیہون شریف', province: 'سندھ', country: 'Pakistan', lat: 26.4258, lng: 67.8617, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mat', name: 'Matiari', urdu: 'مٹیاری', province: 'سندھ', country: 'Pakistan', lat: 25.5975, lng: 68.4467, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mth', name: 'Mithi (Thar)', urdu: 'مٹھی (تھرپارکر)', province: 'سندھ', country: 'Pakistan', lat: 24.7375, lng: 69.7975, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mpm', name: 'Mirpur Mathelo', urdu: 'میرپور ماتھیلو', province: 'سندھ', country: 'Pakistan', lat: 28.0228, lng: 69.5489, timezone: 5, method: 'Karachi' },
+  { id: 'pk-rhr', name: 'Rohri', urdu: 'روہڑی', province: 'سندھ', country: 'Pakistan', lat: 27.6744, lng: 68.8956, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mor', name: 'Moro', urdu: 'مورو', province: 'سندھ', country: 'Pakistan', lat: 26.6631, lng: 68.0006, timezone: 5, method: 'Karachi' },
+  { id: 'pk-hub', name: 'Hub Chowki', urdu: 'حب چوکی', province: 'سندھ', country: 'Pakistan', lat: 25.0298, lng: 66.8833, timezone: 5, method: 'Karachi' },
+
+  // ==========================================
+  // KHYBER PAKHTUNKHWA (خیبر پختونخوا)
+  // ==========================================
+  { id: 'pk-pew', name: 'Peshawar', urdu: 'پشاور', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.0151, lng: 71.5249, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mrn', name: 'Mardan', urdu: 'مردان', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.1986, lng: 72.0404, timezone: 5, method: 'Karachi' },
+  { id: 'pk-abt', name: 'Abbottabad', urdu: 'ایبٹ آباد', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.1688, lng: 73.2215, timezone: 5, method: 'Karachi' },
+  { id: 'pk-swt', name: 'Mingora / Swat', urdu: 'مینگورہ / سوات', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.7758, lng: 72.3626, timezone: 5, method: 'Karachi' },
+  { id: 'pk-kht', name: 'Kohat', urdu: 'کوہاٹ', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 33.5869, lng: 71.4414, timezone: 5, method: 'Karachi' },
+  { id: 'pk-bnn', name: 'Bannu', urdu: 'بنوں', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 32.9854, lng: 70.6027, timezone: 5, method: 'Karachi' },
+  { id: 'pk-dik', name: 'Dera Ismail Khan', urdu: 'ڈیرہ اسماعیل خان', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 31.8327, lng: 70.9024, timezone: 5, method: 'Karachi' },
+  { id: 'pk-swb', name: 'Swabi', urdu: 'صوابی', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.1202, lng: 72.4698, timezone: 5, method: 'Karachi' },
+  { id: 'pk-csd', name: 'Charsadda', urdu: 'چارسدہ', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.1482, lng: 71.7406, timezone: 5, method: 'Karachi' },
+  { id: 'pk-nsh', name: 'Nowshera', urdu: 'نوشہرہ', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.0153, lng: 71.9747, timezone: 5, method: 'Karachi' },
+  { id: 'pk-hrp', name: 'Haripur', urdu: 'ہری پور', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 33.9998, lng: 72.9341, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mnh', name: 'Mansehra', urdu: 'مانسہرہ', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.3302, lng: 73.1968, timezone: 5, method: 'Karachi' },
+  { id: 'pk-krk', name: 'Karak', urdu: 'کرک', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 33.1114, lng: 71.0925, timezone: 5, method: 'Karachi' },
+  { id: 'pk-hng', name: 'Hangu', urdu: 'ہنگو', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 33.5319, lng: 71.0594, timezone: 5, method: 'Karachi' },
+  { id: 'pk-tnk', name: 'Tank', urdu: 'ٹانک', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 32.2217, lng: 70.3792, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mlk', name: 'Malakand', urdu: 'مالاکنڈ', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.5656, lng: 71.9304, timezone: 5, method: 'Karachi' },
+  { id: 'pk-tmg', name: 'Timergara / Dir Lower', urdu: 'تیمرگرہ / دیر زیریں', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.8281, lng: 71.8408, timezone: 5, method: 'Karachi' },
+  { id: 'pk-udr', name: 'Upper Dir', urdu: 'اپر دیر', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 35.2074, lng: 71.8753, timezone: 5, method: 'Karachi' },
+  { id: 'pk-ctr', name: 'Chitral', urdu: 'چترال', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 35.8510, lng: 71.7864, timezone: 5, method: 'Karachi' },
+  { id: 'pk-prc', name: 'Parachinar / Kurram', urdu: 'پاراچنار / کرم', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 33.8992, lng: 70.1008, timezone: 5, method: 'Karachi' },
+  { id: 'pk-msh', name: 'Miranshah / N.Waziristan', urdu: 'میرانشاہ / شمالی وزیرستان', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 33.0014, lng: 70.0711, timezone: 5, method: 'Karachi' },
+  { id: 'pk-wna', name: 'Wana / S.Waziristan', urdu: 'وانا / جنوبی وزیرستان', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 32.2989, lng: 69.5725, timezone: 5, method: 'Karachi' },
+  { id: 'pk-btk', name: 'Batkhela', urdu: 'بٹ خیلہ', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.6183, lng: 71.9722, timezone: 5, method: 'Karachi' },
+  { id: 'pk-rsp', name: 'Risalpur', urdu: 'رسالپور', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.0667, lng: 71.9833, timezone: 5, method: 'Karachi' },
+  { id: 'pk-tpi', name: 'Topi', urdu: 'ٹوپی', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.0703, lng: 72.6214, timezone: 5, method: 'Karachi' },
+  { id: 'pk-jmr', name: 'Jamrud', urdu: 'جمرود', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.0044, lng: 71.3917, timezone: 5, method: 'Karachi' },
+  { id: 'pk-ldk', name: 'Landi Kotal', urdu: 'لنڈی کوتل', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.0975, lng: 71.1433, timezone: 5, method: 'Karachi' },
+  { id: 'pk-blk', name: 'Balakot', urdu: 'بالاکوٹ', province: 'خیبر پختونخوا', country: 'Pakistan', lat: 34.5486, lng: 73.3533, timezone: 5, method: 'Karachi' },
+
+  // ==========================================
+  // BALOCHISTAN (صوبہ بلوچستان)
+  // ==========================================
+  { id: 'pk-qta', name: 'Quetta', urdu: 'کوئٹہ', province: 'بلوچستان', country: 'Pakistan', lat: 30.1798, lng: 66.9750, timezone: 5, method: 'Karachi' },
+  { id: 'pk-gwd', name: 'Gwadar', urdu: 'گوادر', province: 'بلوچستان', country: 'Pakistan', lat: 25.1216, lng: 62.3254, timezone: 5, method: 'Karachi' },
+  { id: 'pk-tur', name: 'Turbat', urdu: 'تربت', province: 'بلوچستان', country: 'Pakistan', lat: 26.0081, lng: 63.0540, timezone: 5, method: 'Karachi' },
+  { id: 'pk-khz', name: 'Khuzdar', urdu: 'خضدار', province: 'بلوچستان', country: 'Pakistan', lat: 27.8119, lng: 66.6044, timezone: 5, method: 'Karachi' },
+  { id: 'pk-sbi', name: 'Sibi', urdu: 'سبی', province: 'بلوچستان', country: 'Pakistan', lat: 29.5448, lng: 67.8764, timezone: 5, method: 'Karachi' },
+  { id: 'pk-zhb', name: 'Zhob', urdu: 'ژوب', province: 'بلوچستان', country: 'Pakistan', lat: 31.3408, lng: 69.4486, timezone: 5, method: 'Karachi' },
+  { id: 'pk-cmn', name: 'Chaman', urdu: 'چمن', province: 'بلوچستان', country: 'Pakistan', lat: 30.9177, lng: 66.4526, timezone: 5, method: 'Karachi' },
+  { id: 'pk-lrl', name: 'Loralai', urdu: 'لورالائی', province: 'بلوچستان', country: 'Pakistan', lat: 30.3705, lng: 68.5980, timezone: 5, method: 'Karachi' },
+  { id: 'pk-psh', name: 'Pishin', urdu: 'پشین', province: 'بلوچستان', country: 'Pakistan', lat: 30.5803, lng: 66.9961, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mst', name: 'Mastung', urdu: 'مستونگ', province: 'بلوچستان', country: 'Pakistan', lat: 29.7997, lng: 66.8456, timezone: 5, method: 'Karachi' },
+  { id: 'pk-klt', name: 'Kalat', urdu: 'قلات', province: 'بلوچستان', country: 'Pakistan', lat: 29.0225, lng: 66.5917, timezone: 5, method: 'Karachi' },
+  { id: 'pk-dmj', name: 'Dera Murad Jamali', urdu: 'ڈیرہ مراد جمالی', province: 'بلوچستان', country: 'Pakistan', lat: 28.5466, lng: 68.2231, timezone: 5, method: 'Karachi' },
+  { id: 'pk-day', name: 'Dera Allah Yar', urdu: 'ڈیرہ اللہ یار', province: 'بلوچستان', country: 'Pakistan', lat: 28.3736, lng: 68.3508, timezone: 5, method: 'Karachi' },
+  { id: 'pk-khr', name: 'Kharan', urdu: 'خاران', province: 'بلوچستان', country: 'Pakistan', lat: 28.5833, lng: 65.4167, timezone: 5, method: 'Karachi' },
+  { id: 'pk-nshk', name: 'Nushki', urdu: 'نوشکی', province: 'بلوچستان', country: 'Pakistan', lat: 29.5542, lng: 66.0215, timezone: 5, method: 'Karachi' },
+  { id: 'pk-pgr', name: 'Panjgur', urdu: 'پنجگور', province: 'بلوچستان', country: 'Pakistan', lat: 26.9644, lng: 64.0903, timezone: 5, method: 'Karachi' },
+  { id: 'pk-orm', name: 'Ormara', urdu: 'اورماڑہ', province: 'بلوچستان', country: 'Pakistan', lat: 25.2088, lng: 64.6358, timezone: 5, method: 'Karachi' },
+  { id: 'pk-psn', name: 'Pasni', urdu: 'پسنی', province: 'بلوچستان', country: 'Pakistan', lat: 25.2631, lng: 63.4714, timezone: 5, method: 'Karachi' },
+  { id: 'pk-zrt', name: 'Ziarat', urdu: 'زیارت', province: 'بلوچستان', country: 'Pakistan', lat: 30.3824, lng: 67.7256, timezone: 5, method: 'Karachi' },
+  { id: 'pk-umh', name: 'Usta Muhammad', urdu: 'اوستہ محمد', province: 'بلوچستان', country: 'Pakistan', lat: 28.1794, lng: 68.0445, timezone: 5, method: 'Karachi' },
+  { id: 'pk-qsf', name: 'Qila Saifullah', urdu: 'قلعہ سیف اللہ', province: 'بلوچستان', country: 'Pakistan', lat: 30.7008, lng: 68.3598, timezone: 5, method: 'Karachi' },
+  { id: 'pk-qab', name: 'Qila Abdullah', urdu: 'قلعہ عبداللہ', province: 'بلوچستان', country: 'Pakistan', lat: 30.7281, lng: 66.6611, timezone: 5, method: 'Karachi' },
+  { id: 'pk-dbg', name: 'Dera Bugti', urdu: 'ڈیرہ بگٹی', province: 'بلوچستان', country: 'Pakistan', lat: 29.0308, lng: 69.1808, timezone: 5, method: 'Karachi' },
+  { id: 'pk-khl', name: 'Kohlu', urdu: 'کوہلو', province: 'بلوچستان', country: 'Pakistan', lat: 29.8965, lng: 69.2532, timezone: 5, method: 'Karachi' },
+  { id: 'pk-bkh', name: 'Barkhan', urdu: 'بارکھان', province: 'بلوچستان', country: 'Pakistan', lat: 29.8978, lng: 69.5256, timezone: 5, method: 'Karachi' },
+
+  // ==========================================
+  // AZAD JAMMU & KASHMIR (آزاد جموں و کشمیر)
+  // ==========================================
+  { id: 'pk-mzf', name: 'Muzaffarabad', urdu: 'مظفرآباد', province: 'آزاد کشمیر', country: 'Pakistan', lat: 34.3700, lng: 73.4711, timezone: 5, method: 'Karachi' },
+  { id: 'pk-mpr', name: 'Mirpur (AJK)', urdu: 'میرپور (آزاد کشمیر)', province: 'آزاد کشمیر', country: 'Pakistan', lat: 33.1484, lng: 73.7519, timezone: 5, method: 'Karachi' },
+  { id: 'pk-rwk', name: 'Rawalakot', urdu: 'راولاکوٹ', province: 'آزاد کشمیر', country: 'Pakistan', lat: 33.7297, lng: 73.7917, timezone: 5, method: 'Karachi' },
+  { id: 'pk-ktl', name: 'Kotli', urdu: 'کوٹلی', province: 'آزاد کشمیر', country: 'Pakistan', lat: 33.5156, lng: 73.9019, timezone: 5, method: 'Karachi' },
+  { id: 'pk-bmb', name: 'Bhimber', urdu: 'بھمبر', province: 'آزاد کشمیر', country: 'Pakistan', lat: 32.9747, lng: 74.0808, timezone: 5, method: 'Karachi' },
+  { id: 'pk-bgh', name: 'Bagh', urdu: 'باغ', province: 'آزاد کشمیر', country: 'Pakistan', lat: 33.9811, lng: 73.7761, timezone: 5, method: 'Karachi' },
+  { id: 'pk-pln', name: 'Pallandri', urdu: 'پلندری', province: 'آزاد کشمیر', country: 'Pakistan', lat: 33.7128, lng: 73.6886, timezone: 5, method: 'Karachi' },
+  { id: 'pk-atm', name: 'Athmuqam (Neelum)', urdu: 'آٹھمقام (نیلم ویلی)', province: 'آزاد کشمیر', country: 'Pakistan', lat: 34.5889, lng: 73.9089, timezone: 5, method: 'Karachi' },
+  { id: 'pk-htb', name: 'Hattian Bala', urdu: 'ہٹیاں بالا', province: 'آزاد کشمیر', country: 'Pakistan', lat: 34.1694, lng: 73.7431, timezone: 5, method: 'Karachi' },
+  { id: 'pk-hvl', name: 'Haveli / Kahuta', urdu: 'حویلی / کہوٹہ', province: 'آزاد کشمیر', country: 'Pakistan', lat: 33.8833, lng: 74.1000, timezone: 5, method: 'Karachi' },
+
+  // ==========================================
+  // GILGIT-BALTISTAN (گلگت بلتستان)
+  // ==========================================
+  { id: 'pk-glt', name: 'Gilgit', urdu: 'گلگت', province: 'گلگت بلتستان', country: 'Pakistan', lat: 35.9221, lng: 74.3087, timezone: 5, method: 'Karachi' },
+  { id: 'pk-skd', name: 'Skardu', urdu: 'سکردو', province: 'گلگت بلتستان', country: 'Pakistan', lat: 35.2971, lng: 75.6333, timezone: 5, method: 'Karachi' },
+  { id: 'pk-hnz', name: 'Hunza / Karimabad', urdu: 'ہنزہ / کریم آباد', province: 'گلگت بلتستان', country: 'Pakistan', lat: 36.3257, lng: 74.6619, timezone: 5, method: 'Karachi' },
+  { id: 'pk-cls', name: 'Chilas / Diamer', urdu: 'چلاس / دیامر', province: 'گلگت بلتستان', country: 'Pakistan', lat: 35.4128, lng: 74.0961, timezone: 5, method: 'Karachi' },
+  { id: 'pk-ghz', name: 'Gahkuch / Ghizer', urdu: 'گاہکوچ / غذر', province: 'گلگت بلتستان', country: 'Pakistan', lat: 36.1736, lng: 73.7667, timezone: 5, method: 'Karachi' },
+  { id: 'pk-ast', name: 'Astore', urdu: 'استور', province: 'گلگت بلتستان', country: 'Pakistan', lat: 35.3667, lng: 74.8500, timezone: 5, method: 'Karachi' },
+  { id: 'pk-khp', name: 'Khaplu / Ghanche', urdu: 'خپلو / گانچھے', province: 'گلگت بلتستان', country: 'Pakistan', lat: 35.1742, lng: 76.3375, timezone: 5, method: 'Karachi' },
+  { id: 'pk-shg', name: 'Shigar', urdu: 'شگر', province: 'گلگت بلتستان', country: 'Pakistan', lat: 35.4267, lng: 75.7294, timezone: 5, method: 'Karachi' },
+  { id: 'pk-ngr', name: 'Nagar', urdu: 'نگر', province: 'گلگت بلتستان', country: 'Pakistan', lat: 36.2500, lng: 74.6500, timezone: 5, method: 'Karachi' },
+
+  // ==========================================
+  // MIDDLE EAST & SAUDI ARABIA (مشرقِ وسطیٰ و حرمین شریفین)
+  // ==========================================
+  { id: 'sa-mak', name: 'Makkah', urdu: 'مکہ مکرمہ', province: 'حجاز مقدس', country: 'Saudi Arabia', lat: 21.4225, lng: 39.8262, timezone: 3, method: 'UmmAlQura' },
+  { id: 'sa-med', name: 'Madinah', urdu: 'مدینہ منورہ', province: 'حجاز مقدس', country: 'Saudi Arabia', lat: 24.5247, lng: 39.5692, timezone: 3, method: 'UmmAlQura' },
+  { id: 'sa-ruh', name: 'Riyadh', urdu: 'ریاض', province: 'سعودی عرب', country: 'Saudi Arabia', lat: 24.7136, lng: 46.6753, timezone: 3, method: 'UmmAlQura' },
+  { id: 'sa-jed', name: 'Jeddah', urdu: 'جدہ', province: 'سعودی عرب', country: 'Saudi Arabia', lat: 21.5433, lng: 39.1728, timezone: 3, method: 'UmmAlQura' },
+  { id: 'sa-dmm', name: 'Dammam', urdu: 'دمام', province: 'سعودی عرب', country: 'Saudi Arabia', lat: 26.4207, lng: 50.0888, timezone: 3, method: 'UmmAlQura' },
+  { id: 'ae-dxb', name: 'Dubai', urdu: 'دبئی', province: 'متحدہ عرب امارات', country: 'United Arab Emirates', lat: 25.2048, lng: 55.2708, timezone: 4, method: 'MWL' },
+  { id: 'ae-auh', name: 'Abu Dhabi', urdu: 'ابوظہبی', province: 'متحدہ عرب امارات', country: 'United Arab Emirates', lat: 24.4539, lng: 54.3773, timezone: 4, method: 'MWL' },
+  { id: 'ae-shj', name: 'Sharjah', urdu: 'شارجہ', province: 'متحدہ عرب امارات', country: 'United Arab Emirates', lat: 25.3463, lng: 55.4209, timezone: 4, method: 'MWL' },
+  { id: 'qa-doh', name: 'Doha', urdu: 'دوحہ', province: 'قطر', country: 'Qatar', lat: 25.2854, lng: 51.5310, timezone: 3, method: 'Qatar' },
+  { id: 'kw-kwt', name: 'Kuwait City', urdu: 'کویت سٹی', province: 'کویت', country: 'Kuwait', lat: 29.3759, lng: 47.9774, timezone: 3, method: 'Kuwait' },
+  { id: 'om-mct', name: 'Muscat', urdu: 'مسقط', province: 'عمان', country: 'Oman', lat: 23.5880, lng: 58.3829, timezone: 4, method: 'MWL' },
+  { id: 'bh-man', name: 'Manama', urdu: 'منامہ', province: 'بحرین', country: 'Bahrain', lat: 26.2285, lng: 50.5860, timezone: 3, method: 'MWL' },
+  { id: 'tr-ist', name: 'Istanbul', urdu: 'استنبول', province: 'ترکیہ', country: 'Turkey', lat: 41.0082, lng: 28.9784, timezone: 3, method: 'Turkey' },
+  { id: 'eg-cai', name: 'Cairo', urdu: 'قاہرہ', province: 'مصر', country: 'Egypt', lat: 30.0444, lng: 31.2357, timezone: 2, method: 'Egypt' },
+
+  // ==========================================
+  // SOUTH ASIA & INTERNATIONAL (بین الاقوامی)
+  // ==========================================
+  { id: 'in-del', name: 'Delhi', urdu: 'دہلی', province: 'بھارت', country: 'India', lat: 28.6139, lng: 77.2090, timezone: 5.5, method: 'Karachi' },
+  { id: 'in-bom', name: 'Mumbai', urdu: 'ممبئی', province: 'بھارت', country: 'India', lat: 19.0760, lng: 72.8777, timezone: 5.5, method: 'Karachi' },
+  { id: 'in-sri', name: 'Srinagar (Kashmir)', urdu: 'سری نگر', province: 'کشمیر', country: 'India', lat: 34.0837, lng: 74.7973, timezone: 5.5, method: 'Karachi' },
+  { id: 'bd-dha', name: 'Dhaka', urdu: 'ڈھاکہ', province: 'بنگلہ دیش', country: 'Bangladesh', lat: 23.8103, lng: 90.4125, timezone: 6, method: 'Karachi' },
+  { id: 'af-kbl', name: 'Kabul', urdu: 'کابل', province: 'افغانستان', country: 'Afghanistan', lat: 34.5553, lng: 69.2075, timezone: 4.5, method: 'Karachi' },
+  { id: 'uk-lon', name: 'London', urdu: 'لندن', province: 'برطانیہ', country: 'United Kingdom', lat: 51.5074, lng: -0.1278, timezone: 0, method: 'MWL' },
+  { id: 'uk-bir', name: 'Birmingham', urdu: 'برمنگھم', province: 'برطانیہ', country: 'United Kingdom', lat: 52.4862, lng: -1.8904, timezone: 0, method: 'MWL' },
+  { id: 'uk-man', name: 'Manchester', urdu: 'مانچسٹر', province: 'برطانیہ', country: 'United Kingdom', lat: 53.4808, lng: -2.2426, timezone: 0, method: 'MWL' },
+  { id: 'us-nyc', name: 'New York', urdu: 'نیویارک', province: 'امریکہ', country: 'United States', lat: 40.7128, lng: -74.0060, timezone: -5, method: 'ISNA' },
+  { id: 'us-chi', name: 'Chicago', urdu: 'شکاگو', province: 'امریکہ', country: 'United States', lat: 41.8781, lng: -87.6298, timezone: -6, method: 'ISNA' },
+  { id: 'ca-tor', name: 'Toronto', urdu: 'ٹورنٹو', province: 'کینیڈا', country: 'Canada', lat: 43.6532, lng: -79.3832, timezone: -5, method: 'ISNA' }
+];
+
+// Default fallback city: Karachi
+export const DEFAULT_CITY = CITIES_DATABASE.find(c => c.id === 'pk-khi') || CITIES_DATABASE[0];

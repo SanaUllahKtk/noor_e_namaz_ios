@@ -1,0 +1,16 @@
+{
+	"appId": "com.technologytycoons.noorenamaz",
+	"appName": "Noor-e-Namaz",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"server": {
+		"androidScheme": "https"
+	},
+	"android": {
+		"allowMixedContent": true,
+		"backgroundColor": "#064e3b"
+	},
+	"packageClassList": [
+		"LocalNotificationsPlugin"
+	]
+}

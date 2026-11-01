@@ -1,0 +1,23 @@
+{
+  "name": "نورِ نماز - Technology Tycoons",
+  "short_name": "Noor-e-Namaz",
+  "description": "100% Offline Islamic Mobile App by Technology Tycoons with Prayer Times, Alarm, Tracker, Qaza Manager, Quran, and Tasbeeh.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#064e3b",
+  "theme_color": "#064e3b",
+  "author": "Technology Tycoons",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
